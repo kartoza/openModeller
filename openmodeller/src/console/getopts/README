@@ -1,0 +1,31 @@
+OO Command Line Parser -- v0.2.0 (http://www.dragon-ware.com/~steve/getopts)
+Written by: Steve Mertz <steve@dragon-ware.com>
+License: BSD
+Development Environment: Slackware 9.1, gcc 3.2.3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+OO Command Line Parser is a little project that I did to redo
+my getopts replacement, but to use C++ and do it in an object
+oriented fashion.  
+
+To see how it works,
+
+g++ -c getopts.C sample/main.C
+g++ -o getopts *.o
+
+Now that it's compiled you can run it.
+./getopts -h  will show the help (or use --help)
+
+sample/main.C should be pretty straight forward for your own projects that
+I shouldn't need to write more here.  So I won't.
+
+-- Steve
+
+TODO:
+o Better documentation
+o Proper output of showHelp()
+
+BUGS:
+o 20040315 -- Wouldn't compile under GCC3 -- Jason Li
+o 20010610 -- None that I know of (SAM)
+

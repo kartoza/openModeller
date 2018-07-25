@@ -1,0 +1,44 @@
+  <Algorithm  Id="EnvironmentalDistance" Version="0.2">
+  <Name>Environmental Distance - Mahalanobis</Name>
+   <Overview>Generic algorithm based on environmental dissimilarity metrics.</Overview>
+  <Description>Generic algorithm based on environmental dissimilarity metrics.</Description>
+  <Designers>
+    <Designer Name="Mauro E. S. Munoz, Renato De Giovanni, Danilo J. S. Bellini ()" Contact=""/>
+  </Designers>
+  <Bibliography></Bibliography>
+  <Developers>
+    <Developer Name="Danilo J. S. Bellini" Contact="danilo.estagio [at] gmail.com"/>
+  </Developers>
+  <Guid></Guid>
+  <AcceptsCategoricalMaps>0</AcceptsCategoricalMaps>
+  <RequiresAbsencePoints>0</RequiresAbsencePoints>
+  <Parameters>
+      <Parameter Id="DistanceType">
+        <Name>Metric</Name>
+        <Type>Integer</Type>
+        <Overview>Metric used to calculate distances: 1=Euclidean, 2=Mahalanobis, 3=Manhattan, 4=Chebyshev.</Overview>
+        <Description>Metric used to calculate distances: 1=Euclidean, 2=Mahalanobis, 3=Manhattan, 4=Chebyshev</Description>
+        <AcceptedRange Min="1" Max="4"/>
+        <Default>1</Default>
+        <Value>2</Value>
+      </Parameter>
+      <Parameter Id="MaxDistance">
+        <Name>Maximum distance</Name>
+        <Type>Real</Type>
+        <Overview>Maximum distance to the reference in the environmental space.</Overview>
+        <Description>Maximum distance to the reference in the environmental space, above which the conditions will be considered unsuitable for presence. Since 1 corresponds to the biggest possible distance between any two points in the environment space, setting the maximum distance to this value means that all points in the environmental space will have an associated probability. The probability of presence for points that fall within the range of the maximum distance is inversely proportional to the distance to the reference point (linear decay).</Description>
+        <AcceptedRange Min="0" Max="1"/>
+        <Default>0.1</Default>
+        <Value>0.1</Value>
+      </Parameter>
+      <Parameter Id="NearestPoints">
+        <Name>Nearest 'n' points</Name>
+        <Type>Integer</Type>
+        <Overview>Nearest 'n' points whose mean value will be the reference when calculating environmental distances.</Overview>
+        <Description>Nearest 'n' points whose mean value will be the reference when calculating environmental distances. When set to 1, distances will be measured to the closest point, which is the same behavior of the minimum distance algorithm. When set to 0, distances will be measured to the average of all presence points, which is the same behavior of the distance to average algorithm. Intermediate values between 1 and the total number of presence points are now accepted.</Description>
+        <AcceptedRange Min="0" Max="2147483647"/>
+        <Default>1</Default>
+        <Value>1</Value>
+      </Parameter>
+    </Parameters>
+  </Algorithm>

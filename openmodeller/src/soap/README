@@ -1,0 +1,20 @@
+The openModeller Web Service (OMWS) interface was created to 
+provide programatic access to niche modelling services over the web. 
+
+There are two versions of the API: 1.0 and 2.0. Although most 
+operations are the same, there's no backwards compatibility due 
+to a change in the namespace. Therefore, make sure you use the right 
+client version when interacting with a server.
+
+You can find more information about the OMWS API and the corresponding
+software inside each directory (web_service.t2t and om_server.t2t).
+
+OMWS is based on SOAP. The server implementation uses gSOAP v2.8.15
+(http://gsoap2.sourceforge.net) and has only been tested with
+GNU/Linux running as a CGI.
+
+A command line client in Perl is also available (sampleClient.pl,
+which depends on SOAP::Lite version >= 0.67).
+
+You can find the corresponding implementations for both client and 
+server under each version directory.

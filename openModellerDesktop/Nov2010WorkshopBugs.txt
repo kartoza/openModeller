@@ -1,0 +1,10 @@
+#./ Export to CSV fails unless using .csv extension
+#./ Wizard will not run unless at least 1 layerset has been defined
+Sometimes alg not recognised unless you uncheck and recheck it
+#./ Dont allow user to click finish when modelling with layersets unless a projection layerset is selected
+#./Dont allow user to leave model creation raster screen unless some layers are selected
+#./ Don't allow user to leave taxa selection screen without at least one valid taxon selected
+#./ LonLat labels wrong way around on csv export
+Missing qwt5
+Occurrence points are not added when running a model, but are when loading an exp.
+Only show one instance of each occ. point layer

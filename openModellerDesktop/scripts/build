@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#Assumes there is a copy of qgis built in $HOME/apps
+
+
+mkdir build
+cd build/
+cmake .. -DQGIS_CORE_LIBRARY=${HOME}/apps/lib/libqgis_core.so \
+          -DQGIS_GUI_LIBRARY=${HOME}/apps/lib/libqgis_gui.so \
+          -DCMAKE_BUILD_TYPE=Debug \
+          -DCMAKE_INSTALL_PREFIX=${HOME}/apps/ \
+          -DQGIS_INCLUDE_DIR=${HOME}/apps/include/qgis \
+          -DQGIS_PLUGIN_DIR=${HOME}/apps/lib/qgis 
+make install

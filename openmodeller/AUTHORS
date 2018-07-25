@@ -1,0 +1,110 @@
+CRIA - Centro de Referência em Informação Ambiental:
+
+  * Mauro E. S. Muñoz <mesmunoz [at] gmail . com>
+
+     Main developer and system architecture designer.
+     Implemented the distance algorithms.
+     Implemented the command-line interface.
+
+  * Renato De Giovanni <renato [at] cria . org . br>
+
+     Current framework maintainer.
+     Implemented SVM, Aquamaps and Random Forests algorithms.
+     Implemented the Web Service interface.
+     Refactored all command-line programs.
+     Helped in other specific parts of the code.
+     Helped in documentation and also making releases.
+
+ * Tim Sutton <tim [at] linfiniti . com>
+
+     Implemented the CSM algorithm.
+     Implemented CMake build system.
+     Implemented some of the command line tools.
+     Created the new website.
+     Created the Mac OSX, Windows and Debian packages.
+     Helped a lot in the framework maintenance.
+
+ * Daniel Bolgheroni <daniel [at] cria . org . br>
+
+     Ported openModeller to OpenBSD.
+
+The University of Kansas:
+
+ * Ricardo Scachetti Pereira <ricardo [at] tdwg . org>
+
+     Participated in the design of the system.
+     Implemented the Bioclim and GARP algorithms.
+     Maintainer of the Win version.
+     Implemented initial versions of the SWIG Python and Java interfaces.
+     Contributed in many other parts of the code.
+
+ * Kevin Ruland
+
+     Performed general code review, making lots of improvements everywhere.
+     Finished the SWIG Python interface.
+
+The University of Reading:
+
+ * Peter Brewer <p . w . brewer [at] reading . ac . uk>
+
+     Designed the logo and the original website.
+
+INPE - Instituto Nacional de Pesquisas Espaciais:
+
+ * Alexandre Copertino Jardim <alexcj [at] dpi . inpe . br>
+
+     Integrated openModeller with TerraLib.
+
+ * Missae Yamamoto <missae [at] dpi . inpe . br>
+
+     Developed the pre-analysis API and implemented the chi-square method.
+     Improved pseudo-absence generation.
+     Implemented the Niche Mosaic algorithm. 
+
+Poli - Escola Politécninca da Universidade de São Paulo:
+
+ * Danilo J. S. Bellini <danilo . estagio [at] gmail . com>
+
+     Developed the Environmental Distance algorithm.
+     Created documentation about how to add new algorithms in openModeller.
+
+ * Elisângela Silva da Cunha Rodrigues <elisangela . poli . usp [at] gmail . com>
+
+     Implemented the Maximum Entropy algorithm.
+
+ * Fabrício Rodrigues <fabricio . poliusp [at] gmail . com>
+
+     Implemented the Artificial Neural Networks algorithm.
+     Helped implementing the jackknife pre-analysis.
+
+ * Silvio Luiz Stanzani <silvio_ls [at] yahoo . com . br>
+
+     Enabled integration with Condor in the modelling server.
+
+ * Alex Oshika Avilla (alex . avilla [at] poli . usp .br)
+
+     Helped implementing the Artificial Neural Networks algorithm.
+
+Other individual collaborators
+
+ * Lin, Cheng-Tao <b89605222 [at] ntu . edu . tw>
+
+     Added support for FreeBSD.
+
+ * Jens Oberender <j . obi [at] troja . net>
+
+     Migrated the build process to automake/autoconf.
+     Created the RPM package specification.
+
+ * Tom Elwertowski
+
+     Added support for MAC OS X.
+
+ * Dr Chris Yesson
+
+     Implemented the ENFA algorithm.
+     Revised the CSM algorithm implementation.
+
+ * Alexander Bruy
+ 
+     Provided patches to fix compilation issues in different platforms.

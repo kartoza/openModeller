@@ -1,0 +1,31 @@
+## Once run this will define: 
+## 
+## WMS_FOUND       = system has WMS lib
+##
+## WMS_LIBRARY     = full path to the library
+##
+## WMS_INCLUDE_DIR      = where to find headers 
+##
+## Tim Sutton
+
+
+IF(APPLE)
+FIND_LIBRARY(WMS_LIBRARY wms)
+MARK_AS_ADVANCED (WMS_LIBRARY)
+SET(EXTRA_LIBS ${WMS_LIBRARY})
+ENDIF (APPLE)
+
+
+IF (WMS_LIBRARY)
+   SET(WMS_FOUND TRUE)
+ENDIF (WMS_LIBRARY)
+
+IF (WMS_FOUND)
+   IF (NOT WMS_FIND_QUIETLY)
+     MESSAGE(STATUS "Found WMS: ${WMS_LIBRARY}")
+   ENDIF (NOT WMS_FIND_QUIETLY)
+ELSE (WMS_FOUND)
+   IF (WMS_FIND_REQUIRED)
+      MESSAGE(FATAL_ERROR "Could not find WMS")
+   ENDIF (WMS_FIND_REQUIRED)
+ENDIF (WMS_FOUND)

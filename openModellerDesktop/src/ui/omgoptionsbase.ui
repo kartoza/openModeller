@@ -1,0 +1,1016 @@
+<ui version="4.0" >
+ <class>OmgOptionsBase</class>
+ <widget class="QDialog" name="OmgOptionsBase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>613</width>
+    <height>548</height>
+   </rect>
+  </property>
+  <property name="minimumSize" >
+   <size>
+    <width>400</width>
+    <height>320</height>
+   </size>
+  </property>
+  <property name="windowTitle" >
+   <string>Options</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset resource="../resources/resources.qrc" >:/om_icon_small.png</iconset>
+  </property>
+  <layout class="QGridLayout" >
+   <item row="1" column="0" >
+    <widget class="QDialogButtonBox" name="buttonBox" >
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons" >
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::NoButton|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" >
+    <widget class="QTabWidget" name="tabWidget" >
+     <property name="enabled" >
+      <bool>true</bool>
+     </property>
+     <property name="currentIndex" >
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab_4" >
+      <attribute name="title" >
+       <string>General</string>
+      </attribute>
+      <layout class="QGridLayout" >
+       <item row="0" column="0" >
+        <widget class="QGroupBox" name="groupBox_7" >
+         <property name="title" >
+          <string>Experiment directory</string>
+         </property>
+         <layout class="QGridLayout" >
+          <item row="0" column="0" colspan="3" >
+           <widget class="QLabel" name="label_8" >
+            <property name="text" >
+             <string>By default model data will be saved in your home directory in a sub-directory called '.omgui'. You can choose to override this location by specifying your own data directory below:</string>
+            </property>
+            <property name="wordWrap" >
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" >
+           <widget class="QLabel" name="label_3" >
+            <property name="text" >
+             <string>Data directory</string>
+            </property>
+            <property name="buddy" >
+             <cstring>leDataDirectory</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" >
+           <widget class="QLineEdit" name="leDataDirectory" />
+          </item>
+          <item row="1" column="2" >
+           <widget class="QToolButton" name="toolSelectDataDirectory" >
+            <property name="text" >
+             <string>...</string>
+            </property>
+            <property name="icon" >
+             <iconset resource="../resources/resources.qrc" >:/fileopen.png</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="0" >
+        <widget class="QGroupBox" name="grpSystrayIcon" >
+         <property name="title" >
+          <string>Use system tray icon</string>
+         </property>
+         <property name="checkable" >
+          <bool>true</bool>
+         </property>
+         <property name="checked" >
+          <bool>true</bool>
+         </property>
+         <layout class="QGridLayout" >
+          <item row="0" column="0" >
+           <widget class="QCheckBox" name="cbxMinimizeToSystray" >
+            <property name="text" >
+             <string>When closing the main window, minimise to system tray</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" >
+           <widget class="QCheckBox" name="cbxShowSystrayMessages" >
+            <property name="text" >
+             <string>Notify me about experiment progress using system tray messages*</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" >
+           <widget class="QLabel" name="label_6" >
+            <property name="text" >
+             <string>* Mac OSX users need to have GROWL installed to see these messages</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="2" column="0" >
+        <widget class="QGroupBox" name="groupBox_4" >
+         <property name="title" >
+          <string>Additional options</string>
+         </property>
+         <layout class="QGridLayout" >
+          <item row="0" column="0" >
+           <widget class="QCheckBox" name="cbxShowTooltips" >
+            <property name="text" >
+             <string>Show 'tip of the day' on start up.</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" >
+           <widget class="QCheckBox" name="cbxExperimentInThread" >
+            <property name="text" >
+             <string>Run experiment in its own thread</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" >
+           <widget class="QLabel" name="label_11" >
+            <property name="text" >
+             <string>There are some know issues when running the experiment in its own thread. If you are encountering application crashes you can try disabling this option. When disabled the user interface may be slow to update and appear 'all white' while the experiment is running. This is normal.</string>
+            </property>
+            <property name="wordWrap" >
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="3" column="0" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>20</width>
+           <height>16</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabMapping" >
+      <attribute name="title" >
+       <string>Mapping</string>
+      </attribute>
+      <layout class="QGridLayout" >
+       <item row="0" column="0" >
+        <widget class="QGroupBox" name="groupBox_8" >
+         <property name="title" >
+          <string>Localities</string>
+         </property>
+         <layout class="QGridLayout" >
+          <item row="0" column="0" colspan="3" >
+           <widget class="QLabel" name="lblLocalitiesDescription" >
+            <property name="text" >
+             <string>In the mapping tab, points will be displayed showing the presence and (if available) absence points used to create the model. You can choose how these points should be displayed on the map using the options below.</string>
+            </property>
+            <property name="wordWrap" >
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" >
+           <widget class="QLabel" name="lblLocalitySymbolSize" >
+            <property name="text" >
+             <string>Symbol size</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" >
+           <widget class="QLabel" name="lblPresenceColour" >
+            <property name="text" >
+             <string>Colour for presence records</string>
+            </property>
+            <property name="buddy" >
+             <cstring>toolPresenceColour</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1" >
+           <widget class="QLabel" name="lblPresenceColourPreview" >
+            <property name="styleSheet" >
+             <string>background-color: green;</string>
+            </property>
+            <property name="text" >
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2" >
+           <widget class="QToolButton" name="toolPresenceColour" >
+            <property name="text" >
+             <string>...</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" >
+           <widget class="QLabel" name="lblAbsenceColour" >
+            <property name="text" >
+             <string>Colour for absence records</string>
+            </property>
+            <property name="buddy" >
+             <cstring>toolAbsenceColour</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1" >
+           <widget class="QLabel" name="lblAbsenceColourPreview" >
+            <property name="styleSheet" >
+             <string>background-color: red;</string>
+            </property>
+            <property name="text" >
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="2" >
+           <widget class="QToolButton" name="toolAbsenceColour" >
+            <property name="text" >
+             <string>...</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" colspan="2" >
+           <widget class="QDoubleSpinBox" name="spinLocalitySymbolSize" >
+            <property name="decimals" >
+             <number>1</number>
+            </property>
+            <property name="minimum" >
+             <double>0.100000000000000</double>
+            </property>
+            <property name="maximum" >
+             <double>30.000000000000000</double>
+            </property>
+            <property name="singleStep" >
+             <double>0.100000000000000</double>
+            </property>
+            <property name="value" >
+             <double>3.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="0" >
+        <widget class="QGroupBox" name="groupBox_9" >
+         <property name="title" >
+          <string>Use context layer</string>
+         </property>
+         <property name="checkable" >
+          <bool>true</bool>
+         </property>
+         <layout class="QGridLayout" >
+          <item row="0" column="0" colspan="3" >
+           <widget class="QLabel" name="lblContextLayerOptions" >
+            <property name="text" >
+             <string>A context layer can optionally be specified in order to show regional boundaries on the map. We provide a default context layer for you but you can select a different layer and change the appearence of the context layer using the options below.</string>
+            </property>
+            <property name="wordWrap" >
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" >
+           <widget class="QLabel" name="lblContextLineWidth" >
+            <property name="text" >
+             <string>Line width</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" >
+           <widget class="QLabel" name="lblContextColour" >
+            <property name="text" >
+             <string>Colour for context lines</string>
+            </property>
+            <property name="buddy" >
+             <cstring>toolContextColour</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1" >
+           <widget class="QLabel" name="lblContextColourPreview" >
+            <property name="styleSheet" >
+             <string>background-color:gray;</string>
+            </property>
+            <property name="text" >
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2" >
+           <widget class="QToolButton" name="toolContextColour" >
+            <property name="text" >
+             <string>...</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" >
+           <widget class="QLabel" name="lblContextLayer" >
+            <property name="text" >
+             <string>Context layer</string>
+            </property>
+            <property name="buddy" >
+             <cstring>toolSelectContextLayer</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1" >
+           <widget class="QLineEdit" name="leContextLayer" >
+            <property name="sizePolicy" >
+             <sizepolicy vsizetype="Fixed" hsizetype="Minimum" >
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="2" >
+           <widget class="QToolButton" name="toolSelectContextLayer" >
+            <property name="text" >
+             <string>...</string>
+            </property>
+            <property name="icon" >
+             <iconset resource="../resources/resources.qrc" >:/fileopen.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" colspan="2" >
+           <widget class="QDoubleSpinBox" name="spinContextLineWidth" >
+            <property name="decimals" >
+             <number>1</number>
+            </property>
+            <property name="minimum" >
+             <double>0.100000000000000</double>
+            </property>
+            <property name="maximum" >
+             <double>10.000000000000000</double>
+            </property>
+            <property name="singleStep" >
+             <double>0.100000000000000</double>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="2" column="0" >
+        <widget class="QCheckBox" name="cbxResetExtents" >
+         <property name="text" >
+          <string>In map view always reset extents when switching between models</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_3" >
+      <attribute name="title" >
+       <string>Modeller Plugin</string>
+      </attribute>
+      <layout class="QGridLayout" >
+       <item row="0" column="0" >
+        <widget class="QGroupBox" name="groupBox_3" >
+         <property name="title" >
+          <string>Active plugin</string>
+         </property>
+         <layout class="QGridLayout" >
+          <item row="0" column="0" >
+           <widget class="QLabel" name="label_2" >
+            <property name="text" >
+             <string>Modeller plugin</string>
+            </property>
+            <property name="buddy" >
+             <cstring>cboModellerPluginName</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" >
+           <widget class="QComboBox" name="cboModellerPluginName" />
+          </item>
+          <item row="1" column="0" >
+           <widget class="QLabel" name="lblOutputFormat" >
+            <property name="text" >
+             <string>Output format</string>
+            </property>
+            <property name="buddy" >
+             <cstring>cboOutputFormat</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" >
+           <widget class="QComboBox" name="cboOutputFormat" />
+          </item>
+          <item row="2" column="0" colspan="2" >
+           <widget class="QLabel" name="lblFormatNotes" >
+            <property name="text" >
+             <string>Format notes:</string>
+            </property>
+            <property name="wordWrap" >
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="0" >
+        <widget class="QGroupBox" name="groupBox" >
+         <property name="title" >
+          <string>Plugin options</string>
+         </property>
+         <layout class="QGridLayout" >
+          <item row="2" column="0" colspan="2" >
+           <widget class="QCheckBox" name="cbxModellerVerboseFlag" >
+            <property name="text" >
+             <string>Show verbose output if available (openModeller Debug Log level)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" colspan="2" >
+           <widget class="QCheckBox" name="cbxModellerLoggingFlag" >
+            <property name="text" >
+             <string>Store extra log data if possible (SOAP SEND, RECV and ERROR logs)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" >
+           <widget class="QLineEdit" name="leWebServiceAddress" >
+            <property name="enabled" >
+             <bool>false</bool>
+            </property>
+            <property name="text" >
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" >
+           <widget class="QLabel" name="lblWebServiceAddress" >
+            <property name="text" >
+             <string>Web service address</string>
+            </property>
+            <property name="buddy" >
+             <cstring>leWebServiceAddress</cstring>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="2" column="0" >
+        <widget class="QGroupBox" name="groupBox_2" >
+         <property name="title" >
+          <string>Additional info</string>
+         </property>
+         <layout class="QGridLayout" >
+          <item row="1" column="0" >
+           <widget class="QLabel" name="lblPluginSearchPath" >
+            <property name="text" >
+             <string>not set</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" >
+           <widget class="QLabel" name="label_4" >
+            <property name="text" >
+             <string>Plugin search path:</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_2" >
+      <attribute name="title" >
+       <string>Locale</string>
+      </attribute>
+      <layout class="QGridLayout" >
+       <item row="0" column="0" >
+        <widget class="QGroupBox" name="grpLocale" >
+         <property name="title" >
+          <string>Force override system locale</string>
+         </property>
+         <property name="checkable" >
+          <bool>true</bool>
+         </property>
+         <layout class="QGridLayout" >
+          <item row="0" column="0" >
+           <widget class="QLabel" name="label_5" >
+            <property name="text" >
+             <string>Locale to use instead</string>
+            </property>
+            <property name="buddy" >
+             <cstring>cboLocale</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" >
+           <widget class="QComboBox" name="cboLocale" />
+          </item>
+          <item row="1" column="0" colspan="2" >
+           <widget class="QLabel" name="label_7" >
+            <property name="text" >
+             <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=" font-family:'Lucida Grande'; font-size:13pt; font-weight:400; font-style:normal;">
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-weight:600;">Note:&lt;/span> Enabling / changing overide on local requires an application restart.&lt;/p>&lt;/body>&lt;/html></string>
+            </property>
+            <property name="wordWrap" >
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="0" >
+        <widget class="QGroupBox" name="groupBox_5" >
+         <property name="title" >
+          <string>Additional info</string>
+         </property>
+         <layout class="QGridLayout" >
+          <item row="0" column="0" >
+           <widget class="QLabel" name="lblSystemLocale" >
+            <property name="text" >
+             <string>Detected active locale on your system:</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="2" column="0" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>501</width>
+           <height>51</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabAdvanced" >
+      <attribute name="title" >
+       <string>Advanced</string>
+      </attribute>
+      <layout class="QGridLayout" >
+       <item row="0" column="0" >
+        <widget class="QGroupBox" name="grpProxy" >
+         <property name="title" >
+          <string>Use proxy for web access</string>
+         </property>
+         <property name="flat" >
+          <bool>false</bool>
+         </property>
+         <property name="checkable" >
+          <bool>true</bool>
+         </property>
+         <layout class="QGridLayout" >
+          <item row="0" column="0" >
+           <widget class="QLabel" name="lblProxyHost" >
+            <property name="text" >
+             <string>Host</string>
+            </property>
+            <property name="buddy" >
+             <cstring>cboModellerPluginName</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" >
+           <widget class="QLineEdit" name="leProxyHost" />
+          </item>
+          <item row="1" column="0" >
+           <widget class="QLabel" name="lblProxyPort" >
+            <property name="text" >
+             <string>Port</string>
+            </property>
+            <property name="buddy" >
+             <cstring>cboModellerPluginName</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" >
+           <widget class="QLineEdit" name="leProxyPort" />
+          </item>
+          <item row="2" column="0" >
+           <widget class="QLabel" name="lblUser" >
+            <property name="text" >
+             <string>User</string>
+            </property>
+            <property name="buddy" >
+             <cstring>cboModellerPluginName</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1" >
+           <widget class="QLineEdit" name="leProxyUser" >
+            <property name="toolTip" >
+             <string>Leave this blank if no proxy username / password are required</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" >
+           <widget class="QLabel" name="lblPassword" >
+            <property name="text" >
+             <string>Password</string>
+            </property>
+            <property name="buddy" >
+             <cstring>cboModellerPluginName</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1" >
+           <widget class="QLineEdit" name="leProxyPassword" >
+            <property name="toolTip" >
+             <string>Leave this blank if no proxy username / password are required</string>
+            </property>
+            <property name="echoMode" >
+             <enum>QLineEdit::Password</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="0" >
+        <widget class="QGroupBox" name="groupBox_6" >
+         <property name="title" >
+          <string>GBIF portal</string>
+         </property>
+         <layout class="QGridLayout" >
+          <item row="0" column="0" >
+           <widget class="QLabel" name="label" >
+            <property name="text" >
+             <string>GBIF portal url (e.g. data.gbif.org)</string>
+            </property>
+            <property name="buddy" >
+             <cstring>leGbifUrl</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" >
+           <widget class="QLineEdit" name="leGbifUrl" />
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="2" column="0" >
+        <widget class="QGroupBox" name="grpLogToFile" >
+         <property name="title" >
+          <string>Log to file</string>
+         </property>
+         <property name="checkable" >
+          <bool>true</bool>
+         </property>
+         <layout class="QGridLayout" >
+          <item row="0" column="0" colspan="3" >
+           <widget class="QLabel" name="label_9" >
+            <property name="text" >
+             <string>If you are experiencing problems and need to provide feedback to the openModeller Desktop project, you can enable logging to a file. The file can then be attached to any bug reports. This option is disabled by default.</string>
+            </property>
+            <property name="wordWrap" >
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" >
+           <widget class="QLabel" name="label_10" >
+            <property name="text" >
+             <string>Log file</string>
+            </property>
+            <property name="buddy" >
+             <cstring>leLogFile</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" >
+           <widget class="QLineEdit" name="leLogFile" />
+          </item>
+          <item row="1" column="2" >
+           <widget class="QToolButton" name="toolSelectLogFile" >
+            <property name="text" >
+             <string>...</string>
+            </property>
+            <property name="icon" >
+             <iconset resource="../resources/resources.qrc" >:/fileopen.png</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="3" column="0" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>530</width>
+           <height>31</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabDatabase" >
+      <attribute name="title" >
+       <string>Local Database</string>
+      </attribute>
+      <layout class="QGridLayout" >
+       <item row="0" column="0" >
+        <widget class="QGroupBox" name="grpDatabase" >
+         <property name="title" >
+          <string>Database is available</string>
+         </property>
+         <property name="flat" >
+          <bool>true</bool>
+         </property>
+         <property name="checkable" >
+          <bool>true</bool>
+         </property>
+         <layout class="QGridLayout" >
+          <item row="8" column="0" >
+           <widget class="QLabel" name="lblDbLongitude" >
+            <property name="text" >
+             <string>Long field</string>
+            </property>
+            <property name="buddy" >
+             <cstring>leDbLongitudeField</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="0" >
+           <widget class="QLabel" name="lblDbLatitude" >
+            <property name="text" >
+             <string>Lat field</string>
+            </property>
+            <property name="buddy" >
+             <cstring>leDbLatitudeField</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="1" >
+           <widget class="QLineEdit" name="leDbLongitudeField" >
+            <property name="toolTip" >
+             <string>Leave this blank if no proxy username / password are required</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="1" >
+           <widget class="QLineEdit" name="leDbLatitudeField" >
+            <property name="toolTip" >
+             <string>Leave this blank if no proxy username / password are required</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1" >
+           <widget class="QLineEdit" name="leDbTaxonField" >
+            <property name="toolTip" >
+             <string>Leave this blank if no proxy username / password are required</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0" >
+           <widget class="QLabel" name="lblDbTaxon" >
+            <property name="text" >
+             <string>Taxon field</string>
+            </property>
+            <property name="buddy" >
+             <cstring>leDbTaxonField</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0" >
+           <widget class="QLabel" name="lblDbTable" >
+            <property name="text" >
+             <string>Table</string>
+            </property>
+            <property name="buddy" >
+             <cstring>leDbTable</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0" >
+           <widget class="QLabel" name="lblDbName" >
+            <property name="text" >
+             <string>Database</string>
+            </property>
+            <property name="buddy" >
+             <cstring>leDbName</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1" >
+           <widget class="QLineEdit" name="leDbTable" >
+            <property name="toolTip" >
+             <string>Leave this blank if no proxy username / password are required</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1" >
+           <widget class="QLineEdit" name="leDbPassword" >
+            <property name="toolTip" >
+             <string>Leave this blank if no proxy username / password are required</string>
+            </property>
+            <property name="echoMode" >
+             <enum>QLineEdit::Password</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" >
+           <widget class="QLabel" name="lblDbPassword" >
+            <property name="text" >
+             <string>Password</string>
+            </property>
+            <property name="buddy" >
+             <cstring>leDbPassword</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" >
+           <widget class="QLabel" name="lblDbUser" >
+            <property name="text" >
+             <string>User</string>
+            </property>
+            <property name="buddy" >
+             <cstring>leDbUser</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" >
+           <widget class="QLabel" name="lblDbPort" >
+            <property name="text" >
+             <string>Port</string>
+            </property>
+            <property name="buddy" >
+             <cstring>leDbPort</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1" >
+           <widget class="QLineEdit" name="leDbUser" >
+            <property name="toolTip" >
+             <string>Leave this blank if no proxy username / password are required</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" >
+           <widget class="QLineEdit" name="leDbPort" />
+          </item>
+          <item row="4" column="1" >
+           <widget class="QLineEdit" name="leDbName" >
+            <property name="toolTip" >
+             <string>Leave this blank if no proxy username / password are required</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" >
+           <widget class="QLineEdit" name="leDbHost" />
+          </item>
+          <item row="0" column="0" >
+           <widget class="QLabel" name="lblDbHost" >
+            <property name="text" >
+             <string>Host</string>
+            </property>
+            <property name="buddy" >
+             <cstring>leDbHost</cstring>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="0" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>20</width>
+           <height>31</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>buttonBox</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>leDataDirectory</tabstop>
+  <tabstop>toolSelectDataDirectory</tabstop>
+  <tabstop>grpSystrayIcon</tabstop>
+  <tabstop>cbxMinimizeToSystray</tabstop>
+  <tabstop>cbxShowSystrayMessages</tabstop>
+  <tabstop>cbxShowTooltips</tabstop>
+  <tabstop>cbxExperimentInThread</tabstop>
+  <tabstop>spinLocalitySymbolSize</tabstop>
+  <tabstop>toolPresenceColour</tabstop>
+  <tabstop>toolAbsenceColour</tabstop>
+  <tabstop>groupBox_9</tabstop>
+  <tabstop>spinContextLineWidth</tabstop>
+  <tabstop>toolContextColour</tabstop>
+  <tabstop>leContextLayer</tabstop>
+  <tabstop>toolSelectContextLayer</tabstop>
+  <tabstop>cbxResetExtents</tabstop>
+  <tabstop>cboModellerPluginName</tabstop>
+  <tabstop>cboOutputFormat</tabstop>
+  <tabstop>leWebServiceAddress</tabstop>
+  <tabstop>cbxModellerLoggingFlag</tabstop>
+  <tabstop>cbxModellerVerboseFlag</tabstop>
+  <tabstop>grpLocale</tabstop>
+  <tabstop>cboLocale</tabstop>
+  <tabstop>grpProxy</tabstop>
+  <tabstop>leProxyHost</tabstop>
+  <tabstop>leProxyPort</tabstop>
+  <tabstop>leProxyUser</tabstop>
+  <tabstop>leProxyPassword</tabstop>
+  <tabstop>leGbifUrl</tabstop>
+  <tabstop>grpLogToFile</tabstop>
+  <tabstop>leLogFile</tabstop>
+  <tabstop>toolSelectLogFile</tabstop>
+  <tabstop>grpDatabase</tabstop>
+  <tabstop>leDbHost</tabstop>
+  <tabstop>leDbPort</tabstop>
+  <tabstop>leDbUser</tabstop>
+  <tabstop>leDbPassword</tabstop>
+  <tabstop>leDbName</tabstop>
+  <tabstop>leDbTable</tabstop>
+  <tabstop>leDbTaxonField</tabstop>
+  <tabstop>leDbLatitudeField</tabstop>
+  <tabstop>leDbLongitudeField</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../resources/resources.qrc" />
+ </resources>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>OmgOptionsBase</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>550</x>
+     <y>506</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>7</x>
+     <y>208</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>OmgOptionsBase</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>457</x>
+     <y>506</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>6</x>
+     <y>316</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

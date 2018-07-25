@@ -1,0 +1,366 @@
+<ui version="4.0" >
+ <class>OmgMainWindowBase</class>
+ <widget class="QMainWindow" name="OmgMainWindowBase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>754</width>
+    <height>428</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>openModeller Desktop</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset resource="../resources/resources.qrc" >:/om_icon_small.png</iconset>
+  </property>
+  <property name="unifiedTitleAndToolBarOnMac" >
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="centralWidget" >
+   <layout class="QGridLayout" >
+    <property name="leftMargin" >
+     <number>5</number>
+    </property>
+    <property name="topMargin" >
+     <number>5</number>
+    </property>
+    <property name="rightMargin" >
+     <number>5</number>
+    </property>
+    <property name="bottomMargin" >
+     <number>5</number>
+    </property>
+    <item row="0" column="0" >
+     <widget class="QSplitter" name="splitter" >
+      <property name="orientation" >
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QWidget" name="layoutWidget" >
+       <layout class="QGridLayout" >
+        <property name="leftMargin" >
+         <number>0</number>
+        </property>
+        <property name="topMargin" >
+         <number>10</number>
+        </property>
+        <property name="bottomMargin" >
+         <number>3</number>
+        </property>
+        <item row="0" column="0" colspan="2" >
+         <widget class="QTreeWidget" name="treeExperiment" >
+          <property name="font" >
+           <font>
+            <family>Arial</family>
+            <pointsize>12</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+            <underline>false</underline>
+            <strikeout>false</strikeout>
+           </font>
+          </property>
+          <property name="toolTip" >
+           <string>Experiment Tree View</string>
+          </property>
+          <property name="statusTip" >
+           <string>Experiment Tree View</string>
+          </property>
+          <property name="whatsThis" >
+           <string>List of the models in this experiment.  The current status of each model is shown in the right column.  Models are presented in a tree view and can be resorted using the drop down box below.</string>
+          </property>
+          <property name="frameShape" >
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow" >
+           <enum>QFrame::Plain</enum>
+          </property>
+          <property name="horizontalScrollBarPolicy" >
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="alternatingRowColors" >
+           <bool>true</bool>
+          </property>
+          <property name="indentation" >
+           <number>10</number>
+          </property>
+          <property name="uniformRowHeights" >
+           <bool>false</bool>
+          </property>
+          <property name="sortingEnabled" >
+           <bool>true</bool>
+          </property>
+          <property name="animated" >
+           <bool>true</bool>
+          </property>
+          <property name="wordWrap" >
+           <bool>true</bool>
+          </property>
+          <property name="columnCount" >
+           <number>2</number>
+          </property>
+          <column>
+           <property name="text" >
+            <string>Experiment</string>
+           </property>
+          </column>
+          <column>
+           <property name="text" >
+            <string>Id</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item row="1" column="0" >
+         <widget class="QLabel" name="label_3" >
+          <property name="text" >
+           <string>Sort by:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1" >
+         <widget class="QComboBox" name="cboSortBy" >
+          <property name="whatsThis" >
+           <string>Select how to sort the model list.</string>
+          </property>
+          <item>
+           <property name="text" >
+            <string>Algorithm</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>Taxon</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="2" column="0" >
+         <widget class="QLabel" name="lblReportMode" >
+          <property name="text" >
+           <string>Report Mode : </string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1" >
+         <widget class="QComboBox" name="cboReportMode" >
+          <property name="whatsThis" >
+           <string>Use this drop down box to choose the </string>
+          </property>
+          <item>
+           <property name="text" >
+            <string>HTML</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>XML</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>Text</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QTabWidget" name="tabModelViewDetails" >
+       <property name="layoutDirection" >
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="styleSheet" >
+        <string/>
+       </property>
+       <property name="tabShape" >
+        <enum>QTabWidget::Rounded</enum>
+       </property>
+       <property name="currentIndex" >
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="tabReport" >
+        <attribute name="title" >
+         <string>Report</string>
+        </attribute>
+        <attribute name="icon" >
+         <iconset resource="../resources/resources.qrc" >:/generic_report.png</iconset>
+        </attribute>
+        <layout class="QGridLayout" >
+         <property name="leftMargin" >
+          <number>5</number>
+         </property>
+         <property name="topMargin" >
+          <number>5</number>
+         </property>
+         <property name="rightMargin" >
+          <number>5</number>
+         </property>
+         <property name="bottomMargin" >
+          <number>5</number>
+         </property>
+         <item row="0" column="0" >
+          <widget class="QSplitter" name="splitter_2" >
+           <property name="orientation" >
+            <enum>Qt::Vertical</enum>
+           </property>
+           <widget class="QListWidget" name="listThumbnails" >
+            <property name="styleSheet" >
+             <string/>
+            </property>
+            <property name="frameShape" >
+             <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="frameShadow" >
+             <enum>QFrame::Plain</enum>
+            </property>
+            <property name="lineWidth" >
+             <number>0</number>
+            </property>
+            <property name="alternatingRowColors" >
+             <bool>false</bool>
+            </property>
+            <property name="iconSize" >
+             <size>
+              <width>140</width>
+              <height>160</height>
+             </size>
+            </property>
+            <property name="flow" >
+             <enum>QListView::LeftToRight</enum>
+            </property>
+            <property name="isWrapping" stdset="0" >
+             <bool>true</bool>
+            </property>
+            <property name="resizeMode" >
+             <enum>QListView::Adjust</enum>
+            </property>
+            <property name="layoutMode" >
+             <enum>QListView::Batched</enum>
+            </property>
+            <property name="spacing" >
+             <number>5</number>
+            </property>
+            <property name="uniformItemSizes" >
+             <bool>true</bool>
+            </property>
+            <property name="wordWrap" >
+             <bool>true</bool>
+            </property>
+           </widget>
+           <widget class="QTextBrowser" name="tbReport" />
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="tabTable" >
+        <attribute name="title" >
+         <string>Table</string>
+        </attribute>
+        <attribute name="icon" >
+         <iconset resource="../resources/resources.qrc" >:/selectnone.png</iconset>
+        </attribute>
+        <layout class="QGridLayout" >
+         <item row="0" column="0" >
+          <widget class="QTableView" name="tableView" >
+           <property name="alternatingRowColors" >
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="tabMap" >
+        <attribute name="title" >
+         <string>Output Map</string>
+        </attribute>
+        <attribute name="icon" >
+         <iconset resource="../resources/resources.qrc" >:/zoomFull.png</iconset>
+        </attribute>
+        <layout class="QGridLayout" >
+         <property name="leftMargin" >
+          <number>5</number>
+         </property>
+         <property name="topMargin" >
+          <number>5</number>
+         </property>
+         <property name="rightMargin" >
+          <number>5</number>
+         </property>
+         <property name="bottomMargin" >
+          <number>5</number>
+         </property>
+         <item row="0" column="0" >
+          <widget class="QLabel" name="lblOutputMap" >
+           <property name="whatsThis" >
+            <string>Prediction map for the current model</string>
+           </property>
+           <property name="text" >
+            <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;/head>&lt;body style=" white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;">&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-size:13pt; font-weight:600;">Map currently unavailable&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
+           </property>
+           <property name="alignment" >
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="tab3D" >
+        <attribute name="title" >
+         <string>Planet</string>
+        </attribute>
+        <attribute name="icon" >
+         <iconset resource="../resources/resources.qrc" >:/filefetch.png</iconset>
+        </attribute>
+        <layout class="QGridLayout" >
+         <property name="leftMargin" >
+          <number>5</number>
+         </property>
+         <property name="topMargin" >
+          <number>5</number>
+         </property>
+         <property name="rightMargin" >
+          <number>5</number>
+         </property>
+         <property name="bottomMargin" >
+          <number>5</number>
+         </property>
+         <item row="0" column="0" >
+          <widget class="QWidget" native="1" name="planetWidget" />
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="tabLog" >
+        <attribute name="title" >
+         <string>Logs</string>
+        </attribute>
+        <attribute name="icon" >
+         <iconset resource="../resources/resources.qrc" >:/selectnone.png</iconset>
+        </attribute>
+        <layout class="QGridLayout" >
+         <item row="0" column="0" >
+          <widget class="QTextBrowser" name="tbLog" />
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>tbReport</tabstop>
+  <tabstop>cboSortBy</tabstop>
+  <tabstop>cboReportMode</tabstop>
+  <tabstop>tabModelViewDetails</tabstop>
+  <tabstop>listThumbnails</tabstop>
+  <tabstop>treeExperiment</tabstop>
+  <tabstop>tbLog</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../resources/resources.qrc" />
+ </resources>
+ <connections/>
+</ui>

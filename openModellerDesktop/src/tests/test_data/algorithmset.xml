@@ -1,0 +1,101 @@
+<Algorithms count="7" Name="Local Adapter Algorithms" Description="These are the algorithms available on your local machine ">
+  <Algorithm>
+    <AlgorithmMetadata Id="BioclimDistance" Name="Bioclim distance" Version="0.2" Author="Nix, H. A. Modified by Mauro Munoz" CodeAuthor="" Contact="">
+      <Overview>
+        Implements a variant of the Bioclimatic Envelop Algorithm. For each given environmental variable the algorithm finds the mean and standard deviation (assuming normal distribution) associated to the occurrence points. Each variable has its own envelop represented by the interval [m - c*s, m + c*s], where 'm' is the mean; 'c' is the cutoff input parameter; and 's' is the standard deviation. The original Bioclim specification defines three regions: Suitable, Marginal and Unsuitable. The Suitable region relates to the envelop mentioned before, and is the only region considered in this implementation (i.e. points falling inside Marginal or Unsuitable regions have probability 0 here). Probability of presence for points inside the Suitable region is inversely proportional to the normalized euclidean distance between a point and the mean point in environmental space.
+      </Overview>
+    </AlgorithmMetadata>
+    <AlgorithmParameters>
+      <Param Id="StandardDeviationCutoff" Value="0.674"/>
+    </AlgorithmParameters>
+  </Algorithm>
+
+  <Algorithm>
+    <AlgorithmMetadata Id="DG_GARP_BS" Name="GARP with best subsets - DesktopGARP implementation" Version="3.0.1 alpha" Author="Anderson, R. P., D. Lew, D. and A. T. Peterson." CodeAuthor="" Contact="">
+      <Overview>
+        GARP is a genetic algorithm that creates ecological niche models for species. The models describe environmental conditions under which the species should be able to maintain populations. For input, GARP uses a set of point localities where the species is known to occur and a set of geographic layers representing the environmental parameters that might limit the species' capabilities to survive.
+      </Overview>
+    </AlgorithmMetadata>
+    <AlgorithmParameters>
+      <Param Id="TrainingProportion" Value="0.5"/>
+      <Param Id="TotalRuns" Value="10"/>
+      <Param Id="HardOmissionThreshold" Value="100"/>
+      <Param Id="ModelsUnderOmissionThreshold" Value="20"/>
+      <Param Id="CommissionThreshold" Value="50"/>
+      <Param Id="CommissionSampleSize" Value="10000"/>
+      <Param Id="MaxThreads" Value="1"/>
+      <Param Id="MaxGenerations" Value="400"/>
+      <Param Id="ConvergenceLimit" Value="0.01"/>
+      <Param Id="PopulationSize" Value="50"/>
+      <Param Id="Resamples" Value="2500"/>
+    </AlgorithmParameters>
+  </Algorithm>
+
+  <Algorithm>
+    <AlgorithmMetadata Id="Bioclim" Name="Bioclim" Version="0.2" Author="Nix, H. A." CodeAuthor="" Contact="">
+      <Overview>
+        Implements the Bioclimatic Envelop Algorithm. For each given environmental variable the algorithm finds the mean and standard deviation (assuming normal distribution) associated to the occurrence points. Each variable has its own envelop represented by the interval [m - c*s, m + c*s], where 'm' is the mean; 'c' is the cutoff input parameter; and 's' is the standard deviation. Besides the envelop, each environmental variable has additional upper and lower limits taken from the maximum and minimum values related to the set of occurrence points.
+In this model, any point can be classified as:
+ Suitable: if all associated environmental values fall within the calculated envelops;
+ Marginal: if one or more associated environmental value falls outside the calculated envelop, but still within the upper and lower limits.
+ Unsuitable: if one or more associated enviromental value falls outside the upper and lower limits.
+Bioclim's categorical output is mapped to probabilities of 1.0, 0.5 and 0.0 respectively.
+      </Overview>
+    </AlgorithmMetadata>
+    <AlgorithmParameters>
+      <Param Id="StandardDeviationCutoff" Value="0.674"/>
+    </AlgorithmParameters>
+  </Algorithm>
+
+  <Algorithm>
+    <AlgorithmMetadata Id="CSMBS" Name="Climate Space Model" Version="0.3" Author="Neil Caithness" CodeAuthor="" Contact="">
+      <Overview>
+        Climate Space Model [CSM] is a principle components based algorithm developed by Dr. Neil Caithness. The component selection process int this algorithm implementation is based on the Broken-Stick cutoff where any component with an eigenvalue less than (n stddevs above a randomised sample) is discarded.
+The original CSM was written as series of Matlab functions.
+      </Overview>
+    </AlgorithmMetadata>
+    <AlgorithmParameters>
+      <Param Id="Randomisations" Value="8"/>
+      <Param Id="StandardDeviations" Value="2.0"/>
+      <Param Id="MinComponents" Value="1"/>
+      <Param Id="VerboseDebugging" Value="0"/>
+    </AlgorithmParameters>
+  </Algorithm>
+
+  <Algorithm>
+    <AlgorithmMetadata Id="DG_GARP" Name="GARP - DesktopGARP implementation" Version="1.1 alpha" Author="Stockwell, D. R. B., modified by Ricardo Scachetti Pereira" CodeAuthor="" Contact="">
+      <Overview>
+        GARP is a genetic algorithm that creates ecological niche models for species. The models describe environmental conditions under which the species should be able to maintain populations. For input, GARP uses a set of point localities where the species is known to occur and a set of geographic layers representing the environmental parameters that might limit the species' capabilities to survive.
+      </Overview>
+    </AlgorithmMetadata>
+    <AlgorithmParameters>
+      <Param Id="MaxGenerations" Value="400"/>
+      <Param Id="ConvergenceLimit" Value="0.01"/>
+      <Param Id="PopulationSize" Value="50"/>
+      <Param Id="Resamples" Value="2500"/>
+    </AlgorithmParameters>
+  </Algorithm>
+
+  <Algorithm>
+    <AlgorithmMetadata Id="DistanceToAverage" Name="Distance to average" Version="0.1" Author="Mauro E. S. Munoz" CodeAuthor="" Contact="">
+      <Overview>
+        Normalizes the environmental variables values and the parameter (according to the number of environmental variables). Calculates the mean point in environmental space considering all given presence points. When projecting the result, it calculates the Euclidean distance between the average point and each point in the environmental space. If the distance 'dist' is in [0, MAXDIST] then the probability of occurrence will be in [1,0] (linear decay). If 'dist' > MAXDIST then the probability will be zero.
+      </Overview>
+    </AlgorithmMetadata>
+    <AlgorithmParameters>
+      <Param Id="MaxDist" Value="0.1"/>
+    </AlgorithmParameters>
+  </Algorithm>
+
+  <Algorithm>
+    <AlgorithmMetadata Id="MinimumDistance" Name="Minimum distance" Version="0.2" Author="Mauro E. S. Munoz" CodeAuthor="" Contact="">
+      <Overview>
+        Normalizes the environmental variables values and the parameter (according to the number of environmental variables). Calculates the distance between the given environmental conditions to each occurrence point and selects the closest distance.
+ If distance 'dist' is within [0, MaxDist] then probability will be in [0,1]. If 'dist' > MaxDist then probability will be zero.
+      </Overview>
+    </AlgorithmMetadata>
+    <AlgorithmParameters>
+      <Param Id="MaximumDistance" Value="0.1"/>
+    </AlgorithmParameters>
+  </Algorithm>
+</Algorithms>

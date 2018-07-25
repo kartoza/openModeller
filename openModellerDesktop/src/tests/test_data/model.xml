@@ -1,0 +1,131 @@
+<Model Guid="a8efd70e-ea5f-4c63-8bab-6b4890e88721" Completed="true" Error="false"><CoordinateSystem><Name>Lat/Long WGS84</Name>
+<WKT>GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],TOWGS84[0,0,0,0,0,0,0],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9108"]],AXIS["Lat",NORTH],AXIS["Long",EAST],AUTHORITY["EPSG","4326"]]</WKT>
+</CoordinateSystem>
+<SpeciesFile>/Users/timlinux/gisdata/Occurrences/Acacia//Acacia_cyclops.txt</SpeciesFile>
+<TaxonName>Acacia cyclops</TaxonName>
+<OutputFormatLayer>      
+  <Map Id="[PREFIX]/rain_coolest.tif" IsCategorical="0"/>
+</OutputFormatLayer>
+<ProjectionLayerSet>    
+  <Environment NumLayers="2" Name="S. America (2)" Description="Two South American Layers" Guid="9a4effb7-249a-42cc-9e43-f359b6c2bb34">
+    <Map Id="[PREFIX]/rain_coolest.tif" IsCategorical="0"/>
+    <Map Id="[PREFIX]/temp_avg.tif" IsCategorical="0"/>
+    <Mask Id="[PREFIX]/temp_avg.tif"/>
+    </Environment>
+</ProjectionLayerSet>
+<CreationLayerSet> 
+  <Environment NumLayers="2" Name="S. America (2)" Description="Two South American Layers" Guid="9a4effb7-249a-42cc-9e43-f359b6c2bb34">
+    <Map Id="[PREFIX]/rain_coolest.tif" IsCategorical="0"/>
+    <Map Id="[PREFIX]/temp_avg.tif" IsCategorical="0"/>
+    <Mask Id="[PREFIX]/temp_avg.tif"/>
+    </Environment>
+</CreationLayerSet>
+  <Algorithm  Id="Bioclim" Version="0.2">
+  <Name>Bioclim</Name>
+   <Overview>Uses mean and standard deviation for each environmental variable separately to calculate bioclimatic envelopes. Level of fitness between the environmental values on a point and the respective envelopes classifies points as Suitable, Marginal, or Unsuitable for presence.</Overview>
+  <Description>Implements the Bioclimatic Envelope Algorithm. For each given environmental variable the algorithm finds the mean and standard deviation (assuming normal distribution) associated to the occurrence points. Each variable has its own envelope represented by the interval [m - c*s, m + c*s], where 'm' is the mean; 'c' is the cutoff input parameter; and 's' is the standard deviation. Besides the envelope, each environmental variable has additional upper and lower limits taken from the maximum and minimum values related to the set of occurrence points.
+In this model, any point can be classified as:
+ Suitable: if all associated environmental values fall within the calculated envelopes;
+ Marginal: if one or more associated environmental value falls outside the calculated envelope, but still within the upper and lower limits.
+ Unsuitable: if one or more associated enviromental value falls outside the upper and lower limits.
+Bioclim's categorical output is mapped to probabilities of 1.0, 0.5 and 0.0 respectively.</Description>
+  <Designers>
+    <Designer Name="Nix, H. A." Contact=""/>
+  </Designers>
+  <Bibliography>Nix, H.A. (1986) A biogeographic analysis of Australian elapid snakes. In: Atlas of Elapid Snakes of Australia. (Ed.) R. Longmore, pp. 4-15. Australian Flora and Fauna Series Number 7. Australian Government Publishing Service: Canberra.</Bibliography>
+  <Developers>
+    <Developer Name="Mauro Muoz" Contact="mesmunoz [at] gmail.com"/>
+  </Developers>
+  <Guid>54e1c9cf-002e-4040-9549-0256db36b872</Guid>
+  <AcceptsCategoricalMaps>0</AcceptsCategoricalMaps>
+  <RequiresAbsencePoints>0</RequiresAbsencePoints>
+  <Parameters>
+      <Parameter Id="StandardDeviationCutoff">
+        <Name>Standard deviation cutoff</Name>
+        <Type>Real</Type>
+        <Overview>The envelope is determined by multiplying this parameter and the standard deviation.</Overview>
+        <Description>Standard deviation cutoff for all bioclimatic envelopes.
+ Examples of (fraction of inclusion, parameter value) are:
+ (50.0%, 0.674); (68.3%, 1.000); (90.0%, 1.645); (95.0%, 1.960); (99.7%, 3.000)</Description>
+        <AcceptedRange Min="0" Max="2147483647"/>
+        <Default>0.674</Default>
+        <Value>0.674</Value>
+      </Parameter>
+    </Parameters>
+  </Algorithm>
+  <Localities>        
+    <Point Id="1" X="-68.85" Y="-11.15" Abundance="1"/>
+    <Point Id="2" X="-67.38" Y="-14.32" Abundance="1" />
+    <Point Id="3" X="-67.55" Y="-14.33" Abundance="1" />
+    <Point Id="4" X="-67.58" Y="-14.5" Abundance="1" />
+    <Point Id="5" X="-68.17" Y="-15.25" Abundance="1" />
+    <Point Id="6" X="-67.75" Y="-15.27" Abundance="1" />
+    <Point Id="7" X="-68.46" Y="-15.27" Abundance="1" />
+    <Point Id="8" X="-68.27" Y="-15.37" Abundance="1" />
+    <Point Id="9" X="-67.8" Y="-15.45" Abundance="1" />
+    <Point Id="10" X="-67.87" Y="-15.47" Abundance="1" />
+    <Point Id="11" X="-67.5" Y="-15.5" Abundance="1" />
+    <Point Id="12" X="-67.52" Y="-15.5" Abundance="1" />
+    <Point Id="13" X="-67.15" Y="-15.52" Abundance="1" />
+    <Point Id="14" X="-67.66" Y="-15.82" Abundance="1" />
+    <Point Id="15" X="-67.57" Y="-15.83" Abundance="1" />
+    <Point Id="16" X="-67.92" Y="-15.89" Abundance="1" />
+    <Point Id="17" X="-64.7" Y="-15.97" Abundance="1" />
+    <Point Id="18" X="-67.18" Y="-16.03" Abundance="1" />
+    <Point Id="19" X="-66.74" Y="-16.32" Abundance="1" />
+    <Point Id="20" X="-67.54" Y="-16.4" Abundance="1" />
+    <Point Id="21" X="-67.71" Y="-16.41" Abundance="1" />
+    <Point Id="22" X="-66.96" Y="-16.64" Abundance="1" />
+    <Point Id="23" X="-65.12" Y="-16.73" Abundance="1" />
+    <Point Id="24" X="-65.13" Y="-16.8" Abundance="1" />
+    <Point Id="25" X="-65.4" Y="-16.95" Abundance="1" />
+    <Point Id="26" X="-65.37" Y="-16.97" Abundance="1" />
+    <Point Id="27" X="-65.67" Y="-17.08" Abundance="1" />
+    <Point Id="28" X="-65.52" Y="-17.1" Abundance="1" />
+    <Point Id="29" X="-63.55" Y="-17.32" Abundance="1" />
+    <Point Id="30" X="-63.75" Y="-17.4" Abundance="1" />
+    <Point Id="31" X="-65.02" Y="-17.46" Abundance="1" />
+    <Point Id="32" X="-63.63" Y="-17.49" Abundance="1" />
+    <Point Id="33" X="-63.17" Y="-17.8" Abundance="1" />
+    <Point Id="34" X="-63.61" Y="-18.17" Abundance="1" />
+    <Point Id="35" X="-63.76" Y="-18.8" Abundance="1" />
+    <Point Id="36" X="-63.96" Y="-19.21" Abundance="1" />
+    <Point Id="37" X="-64.06" Y="-19.32" Abundance="1" />
+    <Point Id="38" X="-64.03" Y="-19.82" Abundance="1" />
+    <Point Id="39" X="-70.97" Y="-9.97" Abundance="1" />
+    <Point Id="40" X="-71.27" Y="-11.92" Abundance="1" />
+    <Point Id="41" X="-70.92" Y="-12.22" Abundance="1" />
+    <Point Id="42" X="-72.83" Y="-12.33" Abundance="1" />
+    <Point Id="43" X="-69.05" Y="-12.53" Abundance="1" />
+    <Point Id="44" X="-69.18" Y="-12.6" Abundance="1" />
+    <Point Id="45" X="-70.33" Y="-12.65" Abundance="1" />
+    <Point Id="46" X="-71.23" Y="-12.67" Abundance="1" />
+    <Point Id="47" X="-69.73" Y="-12.68" Abundance="1" />
+    <Point Id="48" X="-69.5" Y="-12.83" Abundance="1" />
+    <Point Id="49" X="-71.25" Y="-12.83" Abundance="1" />
+    <Point Id="50" X="-69.28" Y="-12.85" Abundance="1" />
+    <Point Id="51" X="-71.31" Y="-12.87" Abundance="1" />
+    <Point Id="52" X="-70.3" Y="-12.92" Abundance="1" />
+    <Point Id="53" X="-68.88" Y="-12.95" Abundance="1" />
+    <Point Id="54" X="-71.18" Y="-13" Abundance="1" />
+    <Point Id="55" X="-71.24" Y="-13.12" Abundance="1" />
+    <Point Id="56" X="-69.6" Y="-13.13" Abundance="1" />
+    <Point Id="57" X="-70.37" Y="-13.2" Abundance="1" />
+    <Point Id="58" X="-70.3" Y="-13.28" Abundance="1" />
+    <Point Id="59" X="-70.59" Y="-13.28" Abundance="1" />
+    <Point Id="60" X="-70.64" Y="-13.3" Abundance="1" />
+    <Point Id="61" X="-69.62" Y="-13.37" Abundance="1" />
+    <Point Id="62" X="-69.68" Y="-13.52" Abundance="1" />
+    <Point Id="63" X="-69.56" Y="-13.64" Abundance="1" />
+    <Point Id="64" X="-69.97" Y="-13.8" Abundance="1" />
+    <Point Id="65" X="-69.66" Y="-13.88" Abundance="1" />
+
+<ShapefileName>/Users/timlinux/Desktop/Models/modelOutputs//Test/Bioclim/Acacia_cyclops.shp</ShapefileName><CsvFileName>/Users/timlinux/Desktop/Models/modelOutputs//Test/Bioclim/Acacia_cyclops_projection.csv</CsvFileName></Localities>
+<timlinuxing Start="1180232554" End="1180232568"/>
+<Outputimlinuxages><ThumbnailImage>/Users/timlinux/Desktop/Models/modelOutputs//Test/Bioclim/Acacia_cyclops_projection_small.png</ThumbnailImage><LegendImage>/Users/timlinux/Desktop/Models/modelOutputs//Test/Bioclim/Acacia_cyclops_projection_legend.png</LegendImage><RawImage>/Users/timlinux/Desktop/Models/modelOutputs//Test/Bioclim/Acacia_cyclops_projection.tif</RawImage><ColouredImage>/Users/timlinux/Desktop/Models/modelOutputs//Test/Bioclim/Acacia_cyclops_projection.png</ColouredImage></Outputimlinuxages><WorkingDirectory>/Users/timlinux/Desktop/Models/modelOutputs//Test/Bioclim/</WorkingDirectory><Definition>
+<Model>
+ <Bioclim StdDev="1.21659460303713040651985 1.040880031428702556794974 0.7899666584023369297895556 0.3120542245963300875821744 0.624118950165971630994477 0.7588763291751873252266591 0.2329455181219485804255953 0.1106397233081892472750241 0.109239864646647324986084 0.1041782270133811694190484 0.7369361498048219161205452 0.7272335852208972051258229 0.6232554323571609655729731 0.6154510850505002794719189 0.5967811152500371862927864 0.8312626383927604889478857 0.7943275131903629882046403 0 0.2806111473383210985765857 0.2034387068220558925091268" Mean="20.87060610453287878840456 29.62454553083939856605866 8.753930872136896468305167 1.38762681773214624492141 2.539393935691226733553094 2.251515565948052799427614 0.2484848544453129581821571 0.4808081205595623464077448 0.6242424290288578481167292 0.547474787316539091008849 2.887878768371813009707694 2.51010170669266674536857 18.150730133056640625 13.38666670250170120937128 13.79303628748113474955517 23.22030310197310143394134 22.64333655617453899822067 12 0.8866344672260861869972359 3.641152114579171872321695" Minimum="15.56999969482421875 26.1499996185302734375 6.869989871978759765625 0.591666996479034423828125 -0.2000000029802322387695312 0.1666669994592666625976562 -0.5 0.06666669994592666625976562 0.2000000029802322387695312 0.06666669994592666625976562 1.5 0.866666972637176513671875 16.6275005340576171875 11.56000041961669921875 11.98330020904541015625 21.4400005340576171875 20.8600006103515625 12 0.39186799526214599609375 2.911819934844970703125" Maximum="24.2800006866455078125 31.9699993133544921875 10.6499996185302734375 2.3666698932647705078125 4.30000019073486328125 4.366670131683349609375 0.60000002384185791015625 0.73333299160003662109375 0.89999997615814208984375 0.800000011920928955078125 4.900000095367431640625 4.633329868316650390625 19.67919921875 14.909999847412109375 15.25669956207275390625 25.56999969482421875 24.88330078125 12 1.68163001537322998046875 4.195310115814208984375" />
+</Model>
+</Definition><Stats RocScore="1" Accuracy="100" Omission="0" Commission="-100" PercentCellsPresent="0.113469" TotalCells="269676"/><Log>
+</Log>
+</Model>

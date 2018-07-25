@@ -1,0 +1,10 @@
+<Environment Layers='1'>
+    <Map
+        Filename='testdata/rain_coolest.tif'
+        Categorical='0'
+        />
+    <Mask
+        Filename='testdata/rain_coolest.tif'
+        Categorical='0'
+        />
+</Environment>

@@ -1,0 +1,18 @@
+ Installation Instructions For Linux
+        Tim Sutton 2007
+======================================
+
+1) Command line build only
+
+mkdir build
+cd build
+cmake -DQT_QMAKE_EXECUTABLE=/usr/local/Trolltech/Qt-4.2.2/bin/qmake ..
+make
+sudo make install
+
+2) Building and working in kdevelop (3.4 untested in older versions)
+
+mkdir kdevelop
+cd kdevelop
+cmake -G KDevelop3 -DQT_QMAKE_EXECUTABLE=/usr/local/Trolltech/Qt-4.2.2/bin/qmake ..
+kdevelop

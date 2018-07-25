@@ -1,0 +1,447 @@
+<ui version="4.0" >
+ <class>OmgRasterThresholdBase</class>
+ <widget class="QDialog" name="OmgRasterThresholdBase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>721</width>
+    <height>476</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Raster File Thresholder</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset resource="../resources/resources.qrc" >
+    <normaloff>:/om_logo.png</normaloff>:/om_logo.png</iconset>
+  </property>
+  <layout class="QGridLayout" >
+   <item row="0" column="0" >
+    <widget class="QSplitter" name="splitter" >
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <widget class="QGroupBox" name="groupBox_3" >
+      <property name="title" >
+       <string>Input files</string>
+      </property>
+      <layout class="QGridLayout" >
+       <item row="0" column="0" colspan="2" >
+        <widget class="QTreeWidget" name="treeExperiment" >
+         <property name="sizePolicy" >
+          <sizepolicy vsizetype="Expanding" hsizetype="MinimumExpanding" >
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font" >
+          <font>
+           <family>Arial</family>
+           <pointsize>12</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+           <underline>false</underline>
+           <strikeout>false</strikeout>
+          </font>
+         </property>
+         <property name="toolTip" >
+          <string>Experiment Tree View</string>
+         </property>
+         <property name="statusTip" >
+          <string>Experiment Tree View</string>
+         </property>
+         <property name="whatsThis" >
+          <string>List of the models in this experiment.  The current status of each model is shown in the right column.  Models are presented in a tree view and can be resorted using the drop down box below.</string>
+         </property>
+         <property name="frameShape" >
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="frameShadow" >
+          <enum>QFrame::Plain</enum>
+         </property>
+         <property name="horizontalScrollBarPolicy" >
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="alternatingRowColors" >
+          <bool>true</bool>
+         </property>
+         <property name="selectionMode" >
+          <enum>QAbstractItemView::ExtendedSelection</enum>
+         </property>
+         <property name="iconSize" >
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="indentation" >
+          <number>10</number>
+         </property>
+         <property name="uniformRowHeights" >
+          <bool>false</bool>
+         </property>
+         <property name="sortingEnabled" >
+          <bool>true</bool>
+         </property>
+         <property name="animated" >
+          <bool>true</bool>
+         </property>
+         <property name="wordWrap" >
+          <bool>true</bool>
+         </property>
+         <property name="columnCount" >
+          <number>1</number>
+         </property>
+         <column>
+          <property name="text" >
+           <string>Experiment</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item row="1" column="0" >
+        <widget class="QLabel" name="label_3" >
+         <property name="text" >
+          <string>Sort by</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1" >
+        <widget class="QComboBox" name="cboSortBy" >
+         <property name="whatsThis" >
+          <string>Select how to sort the model list.</string>
+         </property>
+         <item>
+          <property name="text" >
+           <string>Algorithm</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Taxon</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget" >
+      <layout class="QVBoxLayout" >
+       <item>
+        <widget class="QGroupBox" name="grpThresholds" >
+         <property name="title" >
+          <string>Threshold computation</string>
+         </property>
+         <property name="checkable" >
+          <bool>false</bool>
+         </property>
+         <layout class="QGridLayout" >
+          <item row="0" column="0" colspan="2" >
+           <widget class="QLabel" name="lblThresholdLevel" >
+            <property name="text" >
+             <string>Threshold percent</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" colspan="2" >
+           <layout class="QHBoxLayout" >
+            <item>
+             <widget class="QSpinBox" name="spinThreshold" />
+            </item>
+            <item>
+             <widget class="QSlider" name="sliderThreshold" >
+              <property name="sizePolicy" >
+               <sizepolicy vsizetype="Fixed" hsizetype="MinimumExpanding" >
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="2" column="0" colspan="2" >
+           <widget class="QCheckBox" name="cbxCreateThresholdFiles" >
+            <property name="text" >
+             <string>Create intermediate threshold files</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" colspan="2" >
+           <widget class="QLabel" name="lblThresholdOutput" >
+            <property name="enabled" >
+             <bool>false</bool>
+            </property>
+            <property name="text" >
+             <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;/head>&lt;body style=" white-space: pre-wrap; font-family:Sans Serif; font-weight:400; font-style:normal; text-decoration:none;">&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Output Dir&lt;/p>&lt;/body>&lt;/html></string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0" >
+           <widget class="QLineEdit" name="leThresholdOutputDir" >
+            <property name="enabled" >
+             <bool>false</bool>
+            </property>
+            <property name="sizePolicy" >
+             <sizepolicy vsizetype="Fixed" hsizetype="Minimum" >
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1" >
+           <widget class="QPushButton" name="pbnThresholdOutputDir" >
+            <property name="enabled" >
+             <bool>false</bool>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>30</width>
+              <height>26</height>
+             </size>
+            </property>
+            <property name="maximumSize" >
+             <size>
+              <width>30</width>
+              <height>26</height>
+             </size>
+            </property>
+            <property name="text" >
+             <string/>
+            </property>
+            <property name="icon" >
+             <iconset resource="../resources/resources.qrc" >
+              <normaloff>:/fileopen.png</normaloff>:/fileopen.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0" colspan="2" >
+           <widget class="QLabel" name="lblThresholdAggregate" >
+            <property name="enabled" >
+             <bool>true</bool>
+            </property>
+            <property name="text" >
+             <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">&#xd;&#xd;&#xd;
+p, li { white-space: pre-wrap; }&#xd;&#xd;&#xd;
+&lt;/style>&lt;/head>&lt;body style=" font-family:'Lucida Grande'; font-size:13pt; font-weight:400; font-style:normal;">&#xd;&#xd;&#xd;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif';">Output hotspot or consensus file&lt;/p>&lt;/body>&lt;/html></string>
+            </property>
+            <property name="buddy" >
+             <cstring>leThresholdAggregateFile</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0" >
+           <widget class="QLineEdit" name="leThresholdAggregateFile" >
+            <property name="enabled" >
+             <bool>true</bool>
+            </property>
+            <property name="sizePolicy" >
+             <sizepolicy vsizetype="Fixed" hsizetype="Minimum" >
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1" >
+           <widget class="QPushButton" name="pbnSelectThresholdAggregateFile" >
+            <property name="enabled" >
+             <bool>true</bool>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>30</width>
+              <height>26</height>
+             </size>
+            </property>
+            <property name="maximumSize" >
+             <size>
+              <width>30</width>
+              <height>26</height>
+             </size>
+            </property>
+            <property name="text" >
+             <string/>
+            </property>
+            <property name="icon" >
+             <iconset resource="../resources/resources.qrc" >
+              <normaloff>:/fileopen.png</normaloff>:/fileopen.png</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="gprPreview" >
+         <property name="title" >
+          <string/>
+         </property>
+         <layout class="QGridLayout" >
+          <item row="0" column="0" >
+           <widget class="QLabel" name="lblHelp" >
+            <property name="sizePolicy" >
+             <sizepolicy vsizetype="Fixed" hsizetype="Minimum" >
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text" >
+             <string>This tool will convert the selected model raster into a boolean layer where each cell represents either presence (1) or absence (0) based on the specified threshold. For example, if the threshold is 70%, all cells with a probability of 70% or more will be classified as present in the new raster. If more than one model raster is selected, the corresponding boolean rasters will be combined into a single final raster by summing the cell values. Selecting different algorithm outputs for the same taxon will produce a consensus model indicating how many algorithms consider a taxon to be present in each cell. Selecting model outputs for different taxa will produce a hotspot map providing a simple measure of predicted alpha diversity for each cell.&#xd;&#xd;
+</string>
+            </property>
+            <property name="wordWrap" >
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <widget class="QProgressBar" name="progressBar" >
+     <property name="value" >
+      <number>0</number>
+     </property>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" >
+    <widget class="QDialogButtonBox" name="buttonBox" >
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons" >
+      <set>QDialogButtonBox::Close|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>treeExperiment</tabstop>
+  <tabstop>cboSortBy</tabstop>
+  <tabstop>spinThreshold</tabstop>
+  <tabstop>sliderThreshold</tabstop>
+  <tabstop>cbxCreateThresholdFiles</tabstop>
+  <tabstop>leThresholdOutputDir</tabstop>
+  <tabstop>pbnThresholdOutputDir</tabstop>
+  <tabstop>leThresholdAggregateFile</tabstop>
+  <tabstop>pbnSelectThresholdAggregateFile</tabstop>
+  <tabstop>buttonBox</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../resources/resources.qrc" />
+ </resources>
+ <connections>
+  <connection>
+   <sender>cbxCreateThresholdFiles</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>leThresholdOutputDir</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>604</x>
+     <y>114</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>565</x>
+     <y>170</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cbxCreateThresholdFiles</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>pbnThresholdOutputDir</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>571</x>
+     <y>107</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>601</x>
+     <y>174</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>OmgRasterThresholdBase</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>356</x>
+     <y>546</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>452</x>
+     <y>489</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>OmgRasterThresholdBase</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>145</x>
+     <y>546</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>195</x>
+     <y>489</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinThreshold</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>sliderThreshold</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>359</x>
+     <y>66</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>453</x>
+     <y>73</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sliderThreshold</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>spinThreshold</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>519</x>
+     <y>69</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>376</x>
+     <y>64</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

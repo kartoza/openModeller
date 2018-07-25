@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>OmgExperimentPageBase</class>
+ <widget class="QWizardPage" name="OmgExperimentPageBase">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>WizardPage</string>
+  </property>
+  <property name="title">
+   <string>openModeller Experiment details</string>
+  </property>
+  <property name="subTitle">
+   <string>Define a name and description for your experiment. The name must be unique (no two experiments can have the same name.</string>
+  </property>
+  <attribute name="pageId">
+   <string notr="true"/>
+  </attribute>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>100</height>
+      </size>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="lblExperimentName">
+        <property name="minimumSize">
+         <size>
+          <width>120</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Name</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="leExperimentName">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="readOnly">
+         <bool>false</bool>
+        </property>
+        <property name="placeholderText" stdset="0">
+         <string>Enter a name for the experiment...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="lblExperimentDescription">
+        <property name="minimumSize">
+         <size>
+          <width>120</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Description</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="leExperimentDescription">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="readOnly">
+         <bool>false</bool>
+        </property>
+        <property name="placeholderText" stdset="0">
+         <string>Enter a description for the experiment...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_11">
+        <property name="toolTip">
+         <string>By default model data will be saved in your home directory in a sub-directory called '.omgui'. You can choose to override this location by specifying your own data directory.</string>
+        </property>
+        <property name="statusTip">
+         <string>By default model data will be saved in your home directory in a sub-directory called '.omgui'. You can choose to override this location by specifying your own data directory.</string>
+        </property>
+        <property name="text">
+         <string>Data directory</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QLineEdit" name="leDataDirectory">
+          <property name="toolTip">
+           <string>By default model data will be saved in your home directory in a sub-directory called '.omgui'. You can choose to override this location by specifying your own data directory.</string>
+          </property>
+          <property name="statusTip">
+           <string comment="By default model data will be saved in your home directory in a sub-directory called '.omgui'. You can choose to override this location by specifying your own data directory.">By default model data will be saved in your home directory in a sub-directory called '.omgui'. You can choose to override this location by specifying your own data directory.</string>
+          </property>
+          <property name="placeholderText" stdset="0">
+           <string>Enter the name of a directory or select using the button ---&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="toolSelectDataDirectory">
+          <property name="toolTip">
+           <string>By default model data will be saved in your home directory in a sub-directory called '.omgui'. You can choose to override this location by specifying your own data directory.</string>
+          </property>
+          <property name="statusTip">
+           <string comment="By default model data will be saved in your home directory in a sub-directory called '.omgui'. You can choose to override this location by specifying your own data directory.">By default model data will be saved in your home directory in a sub-directory called '.omgui'. You can choose to override this location by specifying your own data directory.</string>
+          </property>
+          <property name="text">
+           <string>...</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../resources/resources.qrc">
+            <normaloff>:/fileopen.png</normaloff>:/fileopen.png</iconset>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="0" colspan="2">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>When you create models, they need to write data to the file system. These data include reports and projected models (as rasters). You can specify where these data should be written here.</string>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../resources/resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

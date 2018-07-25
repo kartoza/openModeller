@@ -1,0 +1,217 @@
+<ui version="4.0" >
+ <class>OmgPreAnalysisAlgorithmManager</class>
+ <widget class="QDialog" name="OmgPreAnalysisAlgorithmManager" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>915</width>
+    <height>521</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Pre-Analysis on layersets</string>
+  </property>
+  <layout class="QGridLayout" >
+   <item row="0" column="0" colspan="3" >
+    <widget class="QSplitter" name="splitter" >
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <widget class="QGroupBox" name="groupBox" >
+      <property name="title" >
+       <string>Available Techniques</string>
+      </property>
+      <layout class="QGridLayout" >
+       <item row="0" column="0" colspan="3" >
+        <widget class="QTableWidget" name="tblAlgorithms" >
+         <property name="alternatingRowColors" >
+          <bool>true</bool>
+         </property>
+         <property name="showGrid" >
+          <bool>false</bool>
+         </property>
+         <property name="gridStyle" >
+          <enum>Qt::NoPen</enum>
+         </property>
+         <row>
+          <property name="text" >
+           <string>New Row</string>
+          </property>
+         </row>
+         <column>
+          <property name="text" >
+           <string>Name</string>
+          </property>
+         </column>
+         <column>
+          <property name="text" >
+           <string>Algorithm</string>
+          </property>
+         </column>
+         <column>
+          <property name="text" >
+           <string>Description</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QGroupBox" name="grpDetails" >
+      <property name="title" >
+       <string>Details</string>
+      </property>
+      <layout class="QGridLayout" >
+       <item row="0" column="0" >
+        <widget class="QTabWidget" name="tabMetadata" >
+         <property name="tabPosition" >
+          <enum>QTabWidget::North</enum>
+         </property>
+         <property name="currentIndex" >
+          <number>1</number>
+         </property>
+         <widget class="QWidget" name="tab" >
+          <attribute name="title" >
+           <string>General</string>
+          </attribute>
+          <layout class="QGridLayout" >
+           <item row="3" column="0" >
+            <widget class="QLabel" name="label_3" >
+             <property name="text" >
+              <string>Description</string>
+             </property>
+             <property name="buddy" >
+              <cstring>teOverview</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" >
+            <widget class="QLineEdit" name="lePreAnalysisName" >
+             <property name="text" >
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0" >
+            <widget class="QLabel" name="label" >
+             <property name="text" >
+              <string>Label for the pre-analysis experiment</string>
+             </property>
+             <property name="buddy" >
+              <cstring>lePreAnalysisName</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0" >
+            <widget class="QTextEdit" name="teOverview" >
+             <property name="readOnly" >
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tabParameters" >
+          <attribute name="title" >
+           <string>Parameters</string>
+          </attribute>
+          <layout class="QGridLayout" >
+           <property name="leftMargin" >
+            <number>0</number>
+           </property>
+           <property name="topMargin" >
+            <number>0</number>
+           </property>
+           <property name="rightMargin" >
+            <number>0</number>
+           </property>
+           <property name="bottomMargin" >
+            <number>0</number>
+           </property>
+           <item row="0" column="0" colspan="3" >
+            <widget class="QFrame" name="frameParameters" >
+             <property name="sizePolicy" >
+              <sizepolicy vsizetype="Ignored" hsizetype="Ignored" >
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="frameShape" >
+              <enum>QFrame::Panel</enum>
+             </property>
+             <property name="frameShadow" >
+              <enum>QFrame::Raised</enum>
+             </property>
+             <property name="lineWidth" >
+              <number>0</number>
+             </property>
+             <layout class="QGridLayout" name="parametersLayout"/>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>681</width>
+       <height>31</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="1" >
+    <widget class="QPushButton" name="pbnRun" >
+     <property name="text" >
+      <string>Run</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2" >
+    <widget class="QPushButton" name="pbnClose" >
+     <property name="text" >
+      <string>Close</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>tblAlgorithms</tabstop>
+  <tabstop>tabMetadata</tabstop>
+  <tabstop>lePreAnalysisName</tabstop>
+  <tabstop>teOverview</tabstop>
+  <tabstop>pbnRun</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../resources/resources.qrc" />
+ </resources>
+ <connections>
+  <connection>
+   <sender>pbnClose</sender>
+   <signal>clicked()</signal>
+   <receiver>OmgPreAnalysisAlgorithmManager</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>701</x>
+     <y>460</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>753</x>
+     <y>499</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

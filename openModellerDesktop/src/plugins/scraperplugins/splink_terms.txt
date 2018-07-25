@@ -1,0 +1,8 @@
+User agreement for accessing the speciesLink network
+
+The speciesLink network promotes free and open access to data, information, and tools available to any individual or group. All data providers have previously accepted to make their data available in order to promote scientific development and research all over the world, and to estimulate the public use of scientific information. But to make use of any data available through the speciesLink network, users must understand and accept that:
+
+    * There is no warranty about data quality and data completeness. Users are at their own risk when making use of any information retrieved from this network.
+    * Users must respect and follow any additional restrictions and licences, if they exist, as indicated by the respective data providers.
+    * Users must give credits to the original data source - the speciesLink network and the corresponding data providers - when publishing any work based on data retrieved from this network.
+

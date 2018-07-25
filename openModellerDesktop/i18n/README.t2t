@@ -1,0 +1,51 @@
+ Internationalisation Notes for openModeller Desktop
+                     Tim Sutton
+
+= Creating a new translation =
+
+```
+touch i18n/openModellerDesktop_xx.ts
+scripts/update_translations.sh
+```
+
+= Compile the translations =
+
+There is no need to do anything special - just build using CMake and it
+will compile and install the translation .qm for you.
+
+= Use the translation =
+
+openModellerDesktop will automatically load your translation based on
+your locale. If it does not load this correctly or you wish to 
+override the locale, enter the preferred locale in the options 
+dialog of openModeller Desktop. Just use the locale e.g. zh_TW
+
+= Translate more phrases =
+
+Translation is done using [http://doc.trolltech.com/4.3/linguist-manual.html Qt Linguist].
+Use the above link to understand how this works. Then compile the translation as
+described above.
+
+= Submit your translation =
+
+Do not commit .qm files to svn - these are generated from the .ts files at compile 
+time. If you have developer access do this for the very first time to add your new
+translation file to SVN:
+
+```
+svn add i18n/openModellerDesktop_xx.ts
+```
+
+Now and any time in the future that you make changes, you can commit doing:
+
+```
+svn commit i18n/openModellerDesktop_xx.ts
+```
+
+If you don't have developer access please send your translation to:
+
+tim _at_ linfiniti.com
+
+
+
+

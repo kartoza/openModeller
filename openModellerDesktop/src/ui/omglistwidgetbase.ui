@@ -1,0 +1,122 @@
+<ui version="4.0" >
+ <class>OmgListWidgetBase</class>
+ <widget class="QWidget" name="OmgListWidgetBase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>226</width>
+    <height>168</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>0</number>
+   </property>
+   <property name="spacing" >
+    <number>3</number>
+   </property>
+   <item row="3" column="1" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>28</width>
+       <height>16</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item rowspan="6" row="0" column="0" >
+    <widget class="QListWidget" name="lstItems" >
+     <property name="alternatingRowColors" >
+      <bool>true</bool>
+     </property>
+     <property name="selectionMode" >
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1" >
+    <widget class="QToolButton" name="toolConfigure" >
+     <property name="text" >
+      <string>...</string>
+     </property>
+     <property name="icon" >
+      <iconset resource="../resources/resources.qrc" >:/configure.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" >
+    <widget class="QToolButton" name="toolSelectNone" >
+     <property name="toolTip" >
+      <string>Clear selection</string>
+     </property>
+     <property name="whatsThis" >
+      <string>Use this button to deselect all items</string>
+     </property>
+     <property name="text" >
+      <string>...</string>
+     </property>
+     <property name="icon" >
+      <iconset resource="../resources/resources.qrc" >:/selectnone.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" >
+    <widget class="QToolButton" name="toolInvertSelection" >
+     <property name="toolTip" >
+      <string>Invert selection</string>
+     </property>
+     <property name="whatsThis" >
+      <string>Use this button to make selected items unselected, and previously unselected items selected.</string>
+     </property>
+     <property name="text" >
+      <string>...</string>
+     </property>
+     <property name="icon" >
+      <iconset resource="../resources/resources.qrc" >:/selectinverse.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1" >
+    <widget class="QToolButton" name="toolAddItem" >
+     <property name="text" >
+      <string>...</string>
+     </property>
+     <property name="icon" >
+      <iconset resource="../resources/resources.qrc" >:/edit_add.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" >
+    <widget class="QToolButton" name="toolSelectAll" >
+     <property name="toolTip" >
+      <string>Select all items</string>
+     </property>
+     <property name="whatsThis" >
+      <string>Use this button to select all the items in the list</string>
+     </property>
+     <property name="text" >
+      <string>Select All</string>
+     </property>
+     <property name="icon" >
+      <iconset resource="../resources/resources.qrc" >:/selectall.png</iconset>
+     </property>
+     <property name="shortcut" >
+      <string>A</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../resources/resources.qrc" />
+ </resources>
+ <connections/>
+</ui>

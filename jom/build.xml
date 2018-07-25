@@ -1,0 +1,442 @@
+<!--
+
+This build script assumes that the source code of your application
+is organized into the following subdirectories underneath the source
+code directory from which you execute the build script:
+
+docs   Static documentation files to be copied to
+the "docs" subdirectory of your distribution.
+
+src    Java source code (and associated resource files)
+to be compiled to the "classes/"
+subdirectory of your applicaiton.
+
+$Id: build.xml 1578 2006-03-17 00:07:57Z timlinux $
+-->
+
+
+<!-- A "project" describes a set of targets that may be requested
+when Ant is executed.  The "default" attribute defines the
+target which is executed if no specific target is requested,
+and the "basedir" attribute defines the current working directory
+from which Ant executes the requested task.  This is normally
+set to the current working directory.
+-->
+
+<project name="om_jni" default="c-compile" basedir=".">
+
+
+
+	<!-- ===================== Property Definitions =========================== -->
+
+
+	<!--
+
+    Each of the following properties are used in the build script.
+    Values for these properties are set by the first place they are
+    defined, from the following list:
+
+    * Definitions on the "ant" command line (ant -Dfoo=bar compile).
+
+    * Definitions from a "build.properties" file in the top level
+    source directory of this application.
+
+    * Definitions from a "build.properties" file in the developer's
+    home directory.
+
+    * Default definitions in this build.xml file.
+
+    You will note below that property values can be composed based on the
+    contents of previously defined properties.  This is a powerful technique
+    that helps you minimize the number of changes required when your development
+    environment is modified.  Note that property composition is allowed within
+    "build.properties" files as well as in the "build.xml" script.
+
+    -->
+
+	<property file="build.properties" />
+	<property file="${user.home}/build.properties" />
+
+
+	<!-- ==================== File and Directory Names ======================== -->
+
+
+	<!--
+
+    These properties generally define file and directory names (or paths) that
+    affect where the build process stores its outputs.
+
+    app.name             Base name of this application, used to
+    construct filenames and directories.
+    Defaults to "myapp".
+
+    app.path             Context path to which this application should be
+    deployed (defaults to "/" plus the value of the
+    "app.name" property).
+
+    app.version          Version number of this iteration of the application.
+
+    build.home           The directory into which the "prepare" and
+    "compile" targets will generate their output.
+    Defaults to "build".
+
+    dist.home            The name of the base directory in which
+    distribution files are created.
+    Defaults to "dist".
+
+    -->
+
+	<property name="app.name" value="om_jni" />
+	<property name="app.version" value="$id$" />
+	<property name="build.home" value="${basedir}" />
+	<property name="dist.home" value="${basedir}/dist" />
+	<property name="docs.home" value="${basedir}/docs" />
+	<property name="src.home" value="${basedir}/src" />
+	<property name="cpp.home" value="${basedir}/cpp" />
+	<property name="required.lib" value="${basedir}/lib" />
+	<property name="packager.name" value="Tim Sutton" />
+	<property name="copyright.name" value="openModeller 2003-2005" />
+
+	<property name="test.dir" location="${build.home}/test" />
+	<property name="test.data.dir" location="${test.dir}/data" />
+	<property name="test.reports.dir" location="${test.dir}/reports" />
+
+	<tstamp>
+		<format property="TestTime" pattern="d-MMMM-yyyy 'T' HH:mm:ss" locale="en" />
+	</tstamp>
+	
+	<!-- ==================== Compilation Classpath =========================== -->
+
+	<!--
+
+        Rather than relying on the CLASSPATH environment variable, Ant includes
+        features that makes it easy to dynamically construct the classpath you
+        need for each compilation.
+
+        -->
+
+	<path id="compile.classpath">
+		<pathelement location="${basedir}" />
+		<fileset dir="${required.lib}">
+			<include name="*.jar" />
+		</fileset>
+	</path>	
+	
+	<!-- ======================= jni, cpp and junit ant tasks ====================== -->
+	
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+	  <classpath>
+	    <pathelement location="${required.lib}/ant-contrib.jar"/>
+	  </classpath>
+	</taskdef>
+	 <!-- Load the cpptasks task -->
+	<taskdef resource="cpptasks.tasks">
+	  <classpath>
+	    <pathelement location="${required.lib}/cpptasks.jar"/>
+	  </classpath>
+	</taskdef>
+	<typedef resource="cpptasks.types">
+		  <classpath>
+		    <pathelement location="${required.lib}/cpptasks.jar"/>
+		  </classpath>
+    </typedef>
+	 <!-- Load the junit task 
+	<taskdef resource="junit">
+	  <classpath>
+	    <pathelement location="${required.lib}/junit.jar"/>
+	  </classpath>
+	</taskdef>-->
+	
+	<!--  ==================== Compilation Control Options ==================== -->
+
+	<!--
+    These properties control option settings on the Javac compiler when it
+    is invoked using the <javac> task.
+        compile.debug        Should compilation include the debug option?
+        compile.deprecation  Should compilation include the deprecation option?
+        compile.optimize     Should compilation include the optimize option?
+        -->
+
+	<property name="compile.debug" value="true" />
+	<property name="compile.deprecation" value="false" />
+	<property name="compile.optimize" value="true" />
+
+
+
+
+
+	<!-- ==================== All Target ====================================== -->
+
+	<!--
+
+        The "all" target is a shortcut for running the "clean" target followed
+        by the "compile" target, to force a complete recompile.
+
+        -->
+
+	<target name="all" depends="clean,compile" description="Clean build and dist directories, then compile" />
+
+
+
+	<!-- ==================== Clean Target ==================================== -->
+	<!--
+        The "clean" target deletes any previous "build" and "dist" directory,
+        so that you can be ensured the application can be built from scratch.
+        -->
+
+	<target name="clean" description="Delete old build and dist directories">
+		<delete dir="${build.home}/docs/api" />
+		<delete dir="${build.home}/classes" />
+		<delete dir="${dist.home}" />
+		<delete file="${build.home}/om_jni.jar" />
+		<delete file="${build.home}/om_jniunittests.jar" />
+		<delete file="${cpp.home}/org_om_omg_jni_OmgOmAdapter.h" />
+	</target>
+
+
+	<!-- ==================== Compile Target ================================== -->
+	<!--
+        The "compile" target transforms source files (from your "src" directory)
+        into object files in the appropriate location in the build directory.
+        This example assumes that you will be including your classes in an
+        unpacked directory hierarchy under "/WEB-INF/classes".
+        -->
+
+	<target name="compile" depends="" description="Compile Java sources">
+
+		<!-- Compile Java classes as necessary -->
+		<mkdir dir="${build.home}/classes" />
+		<javac srcdir="${src.home}" destdir="${build.home}/classes" debug="${compile.debug}" deprecation="${compile.deprecation}" optimize="${compile.optimize}" fork="yes" includes="org/**/*.java" 
+			excludes="">
+
+			<!-- I am leaving the following here as an example of how to do excludes:
+                    <javac srcdir="${src.home}"
+                        destdir="${build.home}/classes"
+                        debug="${compile.debug}"
+                        deprecation="${compile.deprecation}"
+                        optimize="${compile.optimize}"
+                        <classpath refid="compile.classpath" />
+                    -->
+			<classpath refid="compile.classpath" />
+		</javac>
+	</target>
+
+	<!-- ==================== JNI Target ================================== -->
+	<target name="jni-compile" depends="jar" description="Create the jni h/c files">
+	  <javah class="org.om.omg.jni.OmgOmAdapter" destdir="${cpp.home}" verbose="yes" force="yes">
+	  	<classpath>
+     	  	<pathelement location="${build.home}/${app.name}.jar" />
+	  	</classpath>
+	    <!-- <classpath refid="compile.classpath"/> -->
+	  </javah>
+	</target>
+
+	<!-- ==================== c-compile Target ================================== -->
+	<target name="c-compile" depends="jni-compile" description="Compile cpp code">
+      <property environment="env" />
+      <echo message="${env.JAVA_HOME}/include"/>
+      <echo message="${env.JAVA_HOME}/include/linux"/>
+	  <cc link="shared" outtype="shared" multithreaded="true" optimize="speed"
+	    objdir="${cpp.home}" outfile="${cpp.home}/omjniadapter">
+	    <compilerarg value="-Wall"/>
+	    <compilerarg value="-D_JNI_IMPLEMENTATION_"/>
+	    <compilerarg value="-fno-strict-aliasing"/>
+	    <linker name="g++">
+	      <linkerarg value="-lopenmodellerxml"/>
+	    </linker>
+        <fileset dir="${cpp.home}" includes="omjni.cpp"/>
+	    <includepath>
+	      <path path="${env.JAVA_HOME}/include"/>
+	      <path path="${env.JAVA_HOME}/include/linux"/>
+          <path path="/home/aps02ts/dev/cpp/om/src/console"/>
+	      <path path="${basedir}/stub"/>
+	      <path path="${build}"/>
+	    </includepath>
+	  </cc>
+	</target>
+	
+	<!-- ==================== CompileTests Target ================================== -->
+	<target name="compiletests" depends="prepare,compile,jar" description="Compiled unit test code">
+		<javac srcdir="${src.home}" destdir="${build.home}/classes" debug="${compile.debug}" deprecation="${compile.deprecation}" optimize="${compile.optimize}" includes="unittest/**/*.java" excludes="">
+			<classpath>
+				<pathelement location="${build.home}/${app.name}.jar" />
+				<pathelement location="${build.home}/${app.name}lib.jar" />
+				<pathelement path="${java.class.path}" />
+				<pathelement path="" />
+				<fileset dir="${basedir}/lib">
+					<include name="*.jar" />
+				</fileset>
+			</classpath>
+			<include name="**/*.java" />
+		</javac>
+	</target>
+	<!-- ==================== Jar Target ===================================== -->
+	<!--
+        The "jar" target creates a binary distribution of your application
+        in a directory structure ready to be archived in a tar.gz or zip file.
+        Note that this target depends on three others:
+        * "compile" so we know its compileable before building
+        * "javadoc" so that the application Javadocs will have been created
+        * "prepare" so we know all jar contents are available nicely
+        -->
+	<target name="jar" depends="compile,prepare" description="Create om_jni applications jar distribution">
+		<!-- Create application JAR file, bundling in docs, sources, configs and org.* classes -->
+	    <jar jarfile="${build.home}/${app.name}.jar" basedir="${dist.home}/jar" includes="**" excludes="unittest/**/*.class" >
+                <manifest>
+			<attribute name="Built-By" value="${user.name}" />
+			<section name="common">
+				<attribute name="Specification-Title" value="openModeller" />
+				<attribute name="Specification-Version" value="$id$" />
+				<attribute name="Specification-Vendor" value="${copyright.name}" />
+				<attribute name="Implementation-Title" value="openmodeller" />
+				<attribute name="Implementation-Version" value="${version} ${TODAY}" />
+				<attribute name="Implementation-Vendor" value="${copyright.name}" />
+				<!-- @todo Work out how to do this  ! 
+				see 
+				http://www.onjava.com/pub/a/onjava/2001/06/26/ejb.html?page=2
+				for details on the class-path manifest directive. Note that you cant
+				use the classpath in tomcat deplyed apps - the dependent jars still
+				need to lib in WEB_INF/lib/
+				-->
+				<!-- attribute name="Class-Path " value="foobar" / -->
+			</section>
+                </manifest>
+            </jar>
+	</target>
+	<!-- ==================== tests Jar Target ===================================== -->
+	<!--
+        The "testsjar"  target creates a binary distribution of
+        the unit tests
+        -->
+	<target name="unittestjar" depends="compiletests" description="Create om_jni unit tests jar distribution">
+		<jar jarfile="${build.home}/${app.name}unittests.jar" basedir="${build.home}/classes/" includes="unittest/**/*.class" />
+	</target>
+	
+	<!-- ==================== Junit Target ================================== -->
+	<target name="junit" depends="unittestjar">
+		<!-- You must have junit.jar and xalan.jar in ANT_HOME/lib to run this target! -->
+		<!-- Create directories as needed -->
+		<delete dir="${test.data.dir}" />
+		<delete dir="${test.reports.dir}" />
+		<mkdir dir="${test.data.dir}" />
+		<mkdir dir="${test.reports.dir}" />
+
+		<junit printsummary="false" errorProperty="test.failed" failureProperty="test.failed">
+			<classpath>
+				<!-- om_jni jar -->
+				<pathelement location="${build.home}/${app.name}.jar" />
+				<!-- jar containing unittests -->
+				<!-- Now include all the jars in the lib dir -->
+				<fileset dir="${basedir}/lib">
+					<include name="*.jar" />
+				</fileset>
+			</classpath>
+			<formatter type="brief" usefile="false" />
+			<formatter type="xml" />
+			<batchtest fork="true" todir="${test.data.dir}">
+				<fileset dir="${build.home}/classes/" excludes="" 
+                                         includes="unittest/jnbitests/*.class" />
+			</batchtest>
+		</junit>
+		<junitreport todir="${test.data.dir}">
+			<fileset dir="${test.data.dir}">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report format="frames" todir="${test.reports.dir}" />
+		</junitreport>
+		<fail message="Tests failed. Check log and/or reorts." if="test.failed" />
+	</target>
+
+
+
+	<!-- ==================== Install Target ================================== -->
+
+	<target name="install" depends="compile" description="Install does NOTHING at the moment">
+		<!-- DO ME! -->
+	</target>
+
+
+
+	<!-- ==================== Javadoc Target ================================== -->
+	<!--
+        The "javadoc" target creates Javadoc API documentation for the Java
+        classes included in your application.  Normally, this is only required
+        when preparing a distribution release, but is available as a separate
+        target in case the developer wants to create Javadocs independently.
+        -->
+	<target name="javadoc" depends="compile" description="Create Javadoc API documentation">
+		<mkdir dir="${dist.home}/docs/api" />
+		<javadoc sourcepath="${src.home}" destdir="${dist.home}/docs/api" packagenames="*">
+			<classpath refid="compile.classpath" />
+		</javadoc>
+	</target>
+
+	<!-- ==================== Prepare Target ================================== -->
+	<!--
+        The "prepare" target is used to create the "dist" destination directory,
+        Normally, this task is executed indirectly when needed.
+        We need to copy all the docs, libs classes sources etc into the build dir before the jarball can be made
+        -->
+
+	<target name="prepare" depends="compile" description="Create the dist directory needed for jar building">
+		<!-- Create dist directories as needed -->
+		<mkdir dir="${dist.home}/" />
+		<!-- First create and copy stuff for making a jar from -->
+		<mkdir dir="${dist.home}/jar" />
+		<!-- Copy external dependencies as required -->
+		<!-- @todo check if jar files expect libs to be in lib/ or libs/ or either -->
+		<mkdir dir="${dist.home}/jar/lib" />
+		<copy todir="${dist.home}/jar/lib">
+			<fileset dir="${required.lib}" />
+		</copy>
+		<!-- Compiled classes go in the toplevel -->
+		<copy todir="${dist.home}/jar">
+			<fileset dir="${build.home}/classes/" />
+		</copy>
+		<mkdir dir="${dist.home}/jar/src" />
+		<copy todir="${dist.home}/jar/src">
+			<fileset dir="${build.home}/src/" />
+		</copy>
+		<mkdir dir="${dist.home}/jar/doc" />
+		<copy todir="${dist.home}/jar/doc">
+			<fileset dir="${build.home}/doc" />
+		</copy>
+	</target>
+	<!-- ==================== Run Targets ================================== -->
+
+	<target name="run" depends="banner,c-compile" description="Use jni to create an openModeller model">
+		<property environment="env" />
+		<echo message="LD_LIBRARY_PATH = ${env.LD_LIBRARY_PATH}"/>
+		<echo message="App Jar = ${build.home}/${app.name}.jar"/>
+		<java classname="org.om.omg.jni.OmgOmAdapter" fork="true">
+			<classpath>
+				<!-- lib jar -->
+				<pathelement location="${build.home}/${app.name}.jar" />
+				<!-- Now include all the jars in the libs dir -->
+				<fileset dir="${basedir}/lib">
+					<include name="*.jar" />
+				</fileset>
+			</classpath>
+		</java>
+		<echo message="Classpath is :${env.CLASSPATH}" />
+	</target>
+
+
+	
+	<!-- Banner -->
+	<target name="banner" depends="" description="Print the Bdworld Banner and some useful info">
+		<property environment="env" />
+		<echo message="@@@@@@@         @@@@@@@@@@@" />
+		<echo message="   @            @    @    @" />
+		<echo message="   @            @    @    @"   />
+		<echo message="   @   @@@@@@@  @    @    @" />
+		<echo message="   @   @     @  @    @    @" />
+		<echo message="   @   @     @  @    @    @" />
+		<echo message="@@@    @@@@@@@  @    @    @" />
+		<echo message=" " />
+		<echo message=" " />
+		<echo message="Classpath is :${env.CLASSPATH}" />
+	</target>
+
+
+</project>

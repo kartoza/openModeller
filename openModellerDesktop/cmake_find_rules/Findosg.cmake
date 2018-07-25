@@ -1,0 +1,33 @@
+## Once run this will define: 
+## 
+## OSG_FOUND       = system has OSG_PLANET lib
+##
+## OSG_LIBRARY     = full path to the library
+##
+## OSG_INCLUDE_DIR      = where to find headers 
+##
+## Tim Sutton
+
+
+IF(APPLE)
+#SET(GUI_TYPE MACOSX_BUNDLE)
+#INCLUDE_DIRECTORIES ( /Developer/Headers/FlatCarbon )
+FIND_LIBRARY(OSG_LIBRARY osg)
+MARK_AS_ADVANCED (OSG_LIBRARY)
+SET(EXTRA_LIBS ${OSG_LIBRARY} )
+ENDIF (APPLE)
+
+
+IF (OSG_LIBRARY)
+   SET(OSG_FOUND TRUE)
+ENDIF (OSG_LIBRARY)
+
+IF (OSG_FOUND)
+   IF (NOT OSG_FIND_QUIETLY)
+     MESSAGE(STATUS "Found OSG_PLANET: ${OSG_LIBRARY}")
+   ENDIF (NOT OSG_FIND_QUIETLY)
+ELSE (OSG_FOUND)
+   IF (OSG_FIND_REQUIRED)
+      MESSAGE(FATAL_ERROR "Could not find OSG_PLANET")
+   ENDIF (OSG_FIND_REQUIRED)
+ENDIF (OSG_FOUND)

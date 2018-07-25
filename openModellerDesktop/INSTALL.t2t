@@ -1,0 +1,55 @@
+%!encoding: iso-8859-1
+
+
+% These are comments and will not be generated in any output
+% -------------------
+
+%This document is in text2tags format. You can generate html, plain text and
+%moinmoin formatted documentation by running txt2tags on this document. See the
+%txt2tags home page for more details.  Please insert manual line breaks in this
+%document as it makes diffing for changes much easier. To do this in vim 
+%automatically, select a section then issue (gq) command. Please dont
+%apply vim formatting to the whol document as it screws up some formatting
+%rather apply it selectively to paragraphs where needed.
+
+% To generate teh text version of this document:
+% txt2tags -t txt --toc --enum-title -o INSTALL  INSTALL.t2t
+% To generate the moinmoin version of this document
+% txt2tags -t moin --toc --enum-title -o INSTALL.moin  INSTALL.t2t
+
+% End of comments
+% -------------------
+
+
+= Introduction =
+
+/!\ ***Note to document writers:*** Please use this document as the central
+place for describing build procedures. Please do not remove this notice. 
+
+/!\ ***Note:*** This is a 'cut and paste' tutorial - in most cases you can
+simply copy the commands listed in codeblocks that look like this:
+
+``` somecommand to be pasted ```
+
+openModeller Desktop is a faily complex piece of software. I has 3 main 
+dependencies for building:
+
+ * Qt 4.3 or better - Qt is a C++ high level library for building graphical
+ applications, networking, xml, working with graphics etc.
+ * libopenModeller - openModellerDesktio uses this library for carrying out
+ local modelling (i.e. on the same pc as where the application is running).
+ * QGIS - used to provide mapping functionality within the application
+
+In turn some of these dependencies have their own subdependencies for example 
+libopenModeller requires stl, gdal, proj, expat and optionally sqlite3 and 
+the gnu scientific library (GSL). In this document we will walk you through 
+the process of building the openModeller Desktop application on the
+following platforms:
+
+ * Windows MSVC
+ * Windows Mingw
+ * Gnu/Linux
+ * Mac OSX
+
+
+

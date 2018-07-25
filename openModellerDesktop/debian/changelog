@@ -1,0 +1,55 @@
+openmodellerdesktop (1.0.7) gutsy; urgency=low
+
+  * openModeller Library : Support changes and new features in openModeller 0.5.3
+  * Options : Added user option to allow / disallow use of threading in experiment.
+  * Layer Set Manager : 
+  *   Let the layer count label show an appropriate value when a new layerset
+      is created.
+  *   Don't let the user apply a new layerset before the name field is populated.
+  * Algorithm Manager :
+  *   Use spinbox for float and real number inputs.
+  *   Show parameter descriptions as text labels as well as tooltips.
+  * Raster output :
+  *   Fixes for pseudo renderer with QGIS api changes.
+  *   Use QGIS lib to draw pseudocolor preview image.
+  *   Scale pseudocolor to min / max based on image format min / max ranges
+      and not to the range of values contained in the raster itself. Now all
+      model outputs are scaled to the same value range and are more comparable.
+  *   Use GDAL to write ascii grids rather than my hand carved code to do this
+      - should prevent issues with running out of memory and subsequent crashing.
+  * Data fetcher :
+  *   Better error handling for when a data fetcher plugin cant be initialised
+      (no more crash).
+  *   Removed the legacy GBIF plugin - only GBIF Rest plugin will be used now.
+  *   Fixed a bug where plugins were not working in windows in debug build.
+  * Reports :
+  *   Fix to remove artifacts from thumbnails.
+  *   Fixed logic error where AUC and other stats were being set in model
+      projection instead of model creation.
+  *   Show cutoff threshold used for model stats.
+  * Experiment designer, locality options :
+  *   Added options for spatially and environmentally unique occurrence
+      filtering to model class.
+  * Running experiments :
+  *   Delete log file before running an experiment.
+  *   Fix crash when trying to view model previews while experiment is running
+      (dont delete raster in omggdal because its managed by registry).
+  *   Prevent a crash with zero length string for rawimage filename.
+  *   Crash fix and cosmetics improvement - when clicking a not yet run model,
+      show a message rather than trying to load its map even though the raster
+      does not yet exist.
+  * Installer :
+  *   Linux: Use rpath to locate libs (where supported by host OS). This means
+      you can easily install more than one copy of openModeller Desktop on
+      e.g. Linux without running into issues where the wrong library gets
+      used.
+
+ -- Tim Sutton <tim@linfiniti.com>  Thu, 24 Apr 2008 10:47:54 -0300
+
+openmodellerdesktop (1.0.6) gutsy; urgency=low
+
+  * openModellerDesktop 1.0.6 release 
+
+ -- Tim Sutton <tim@linfiniti.com>  Tue, 10 Sep 2007 22:43:41 -0300
+
+

@@ -1,0 +1,78 @@
+openModeller Acceptance Test Script
+===================================
+
+This directory contains a python script designed to perform extensive tests
+on many of openModeller features to ensure its quality.
+
+The tests should be run every time that significant changes have been made
+to the code base as well as when new releases are being prepared.
+
+
+INSTRUCTIONS
+------------
+
+Here are some instructions on how to setup and run the tests:
+
+1) Configure openModeller to build the Python interface. This can be done by
+running the following commands on OM root directory:
+
+	./autogen.sh
+	./configure --enable-python
+	make
+	make install
+
+2) Set your PYTHONPATH environmental variable to include Python site-packages
+directory. In Linux Fedora 2 and Python 2.3, the default directory is:
+
+	/usr/lib/python2.3/site-packages
+
+3) Run the tests with the command:
+
+	./runtest.sh
+
+First, the test script will download test data from 
+http://openmodeller.cria.org.br/download/acc_test_data.tar.gz
+Then it will untar it locally and run the full python test script on it.
+
+Optionally, you can specify the directories containing tests you want to run. By default the script executes all tests in "./algs" directory.
+
+A sample test script can be found in ./samples.
+
+4) The test will run and results will be output to html reports in the file:
+
+	index.html
+
+That page shows a summary of test results. There is a link to a second 
+html page that shows the actual maps generated during the tests side by 
+side to sample of expected results.
+
+One would browse through the maps visually comparing actual results
+agains expected samples.
+
+
+COMMAND LINE OPTIONS
+--------------------
+
+This version of the test script accepts no command line options.
+
+
+CURRENT STATUS
+--------------
+
+- Need to add expected results images;
+ 
+- Need to add those tests to autotools setup. That would include a separate
+make action, that in turn would include automatic download and extraction 
+of test datasets. The test would require python interface to be enabled. 
+
+
+
+ACKNOWLEDGEMENTS
+----------------
+
+Many thanks to Peter Brewer and A. Townsend Peterson for contributing with
+some of the datasets used in this test script.
+
+------------ x -----------
+
+

@@ -1,0 +1,87 @@
+Source: libopenmodeller
+Section: science
+Priority: extra
+Maintainer: Renato De Giovanni <renato@cria.org.br>
+Uploaders: Renato De Giovanni <renato@cria.org.br>
+Build-Depends: debhelper (>= 5.0.0), libgdal-dev, 
+ dpatch, libsqlite3-dev, libgsl0-dev, libproj0, libproj-dev, proj-data, 
+ libexpat1-dev, cmake (>=2.4.3), sharutils, libx11-dev, libcurl4-gnutls-dev
+Standards-Version: 3.7.2
+
+Package: libopenmodeller
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Suggests: libopenmodeller-algorithms, openModellerDesktop 
+Description: openModeller is an open source C++ library to determine potential 
+ distribution in environment and geographic space. Models are generated 
+ by algorithms that receive as input a set of occurrence points 
+ (latitude/longitude/abundance) and a set of raster files with environment
+ data. Models can then be projected to generate distribution maps. 
+ Available algorithms include Bioclim, GARP Best Subsets, Support Vector 
+ Machines, Climate Space Model, Environmental Distance, and AquaMaps.
+ The library uses GDAL to read different raster formats and proj4 to 
+ convert between different coordinate systems and projections.
+
+Package: libopenmodeller-dev
+Architecture: any
+Depends: libopenmodeller (= ${Source-Version}), libgdal-dev, libsqlite3-dev, libgsl0-dev, libproj-dev, proj-data, libexpat1-dev, libcurl4-gnutls-dev
+Provides: libopenmodeller-dev
+Conflicts: 
+Replaces: libopenmodeller-dev
+Suggests: 
+Description: openModeller - development files
+ openModeller is an open source C++ spatial 
+ distribution modelling library which is mainly being used to 
+ predict species distribution (fundamental niche). 
+ .
+ This package contains the headers and libraries
+ needed to develop algorithms and third party applications 
+ based on openModeller.
+ .
+  Home page: http://openmodeller.sf.net/
+
+Package: libopenmodeller-algorithms
+Architecture: any
+Depends: libopenmodeller (= ${Source-Version})
+Description: Algorithm plugins for openModeller
+ openModeller is an open source C++ spatial 
+ distribution modelling library which is mainly being used to 
+ predict species distribution (fundamental niche). 
+ These plugins implement various probability distribution modelling 
+ techniques such as Bioclim, GARP (with Best Subsets procedure), 
+ CSM (Climate Space Model) and Support Vector Machines.
+ .
+  Home page: http://openmodeller.sf.net/
+
+Package: openmodeller-console
+Architecture: any
+Depends: libopenmodeller (= ${Source-Version}), libopenmodeller-algorithms (= ${Source-Version})
+Description: Console applications for openModeller
+ openModeller is an open source C++ spatial 
+ distribution modelling library which is mainly being used to 
+ predict species distribution (fundamental niche). 
+ These applications allow you to run openModeller from the
+ command line and from shell scripting environments.
+ .
+  Home page: http://openmodeller.sf.net/
+
+Package: openmodeller-examples
+Architecture: any
+Depends: libopenmodeller (= ${Source-Version}), libopenmodeller-algorithms (= ${Source-Version}), openmodeller-console (= ${Source-Version})
+Description: Sample data and example configuration files for the
+ openModeller probability distribution modelling library.
+ .
+  Home page: http://openmodeller.sf.net/
+
+Package: openmodeller-server
+Architecture: any
+Depends: libopenmodeller (= ${Source-Version}), libopenmodeller-algorithms (= ${Source-Version}), openmodeller-console (= ${Source-Version})
+Description: Soap server for openModeller
+ openModeller is an open source C++ spatial 
+ distribution modelling library which is mainly being used to 
+ predict species distribution (fundamental niche). 
+ The openModeller server is a SOAP server that listens 
+ for incoming modelling requests. It allows models to be run on 
+ a remote server using a suitable client.
+ .
+  Home page: http://openmodeller.sf.net/

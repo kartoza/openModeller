@@ -1,0 +1,15 @@
+Source: openmodellerdesktop
+Section: misc
+Priority: optional
+Maintainer: Tim Sutton <tim@linfiniti.com>
+Build-Depends: debhelper (>= 5), cdbs, libqt4-dev, cmake, libqgis1-dev (>=0.10), libopenmodeller (>=0.5.3)
+Standards-Version: 3.7.2
+
+Package: openmodellerdesktop
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: User friendly front-end to the openModeller libray.
+ openModellerDesktop is a user friendly front-end to the openModeller
+ library. The software allows you to carry out fundamental niche
+ modelling. Typically this is used to predict the distribution of
+ species given some known occurrence records.

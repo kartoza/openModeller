@@ -1,0 +1,64 @@
+<!-- This is a draft proporsal for representing an experiment and is not finalised or implemented yet! -->
+
+<Experiment>
+  <Model>
+    <Algorithm/>
+    <ModelCreation>
+     <Timing Start="ter 5. dez 15:43:58 2006" End="ter 5. dez 15:44:03 2006"/>
+     <Localities>
+      <Label>furcata boliviana</Label> <!-- Usually taxon name -->
+        <Source Reference="c:\test.txt">
+          <CoordinateSystem>
+            <Name>Lat/Long WGS84</Name>
+            <WKT>GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],TOWGS84[0,0,0,0,0,0,0],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9108"]],AXIS["Lat",NORTH],AXIS["Long",EAST],AUTHORITY["EPSG","4326"]]
+            </WKT>
+          </CoordinateSystem>
+          <Point X="-67.55" Y="-14.33" Sample="305 2565.01 "/>
+          <Point X="-67.58" Y="-14.5" Sample="300 2397.56 "/>
+          <Point X="-68.17" Y="-15.25" Sample="112 2427.53 "/>
+          <Point X="-67.75" Y="-15.27" Sample="145 2285.86 "/>
+          <Point X="-68.46" Y="-15.27" Sample="91 2083.45 "/>
+          <Point X="-68.27" Y="-15.37" Sample="76 2087.67 "/>
+          <Point X="-67.8" Y="-15.45" Sample="134 2291.64 "/>
+        </Source>
+        <Source Reference="c:\test2.txt">
+          <CoordinateSystem>
+            <Name>Lat/Long WGS84</Name>
+            <WKT>GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],TOWGS84[0,0,0,0,0,0,0],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9108"]],AXIS["Lat",NORTH],AXIS["Long",EAST],AUTHORITY["EPSG","4326"]]
+            </WKT>
+          </CoordinateSystem>
+          <Point X="-67.55" Y="-14.33" Sample="305 2565.01 "/>
+          <Point X="-67.58" Y="-14.5" Sample="300 2397.56 "/>
+          <Point X="-68.17" Y="-15.25" Sample="112 2427.53 "/>
+          <Point X="-67.75" Y="-15.27" Sample="145 2285.86 "/>
+          <Point X="-68.46" Y="-15.27" Sample="91 2083.45 "/>
+          <Point X="-68.27" Y="-15.37" Sample="76 2087.67 "/>
+          <Point X="-67.8" Y="-15.45" Sample="134 2291.64 "/>
+        </Source>
+      </Localities>
+      <CreationLayerSet/>
+      <Log/>
+      <Statistics />
+    <ModelCreation>
+    <ModelProjection>
+      <Timing Start="ter 5. dez 15:43:58 2006" End="ter 5. dez 15:44:03 2006"/>
+      <ProjectionLayerSet/>
+      <OutputParameters FileType="FloatingHFA">
+        <TemplateLayer Id="C:/dev/cpp/om/examples/rain_coolest.tif"/>
+      </OutputParameters>
+      <Log/>
+      <Statistics />
+      <OutputImages>
+        <ThumbnailImage>
+          C:/Documents and Settings/timlinux/.omgui/modelOutputs/46e347d1-d2cf-428b-b8f3-4b25077f49ec/Bioclim\furcata_boliviana_projection_small.png
+        </ThumbnailImage>
+        <RawImage>
+          C:\Documents and Settings\timlinux\.omgui\\modelOutputs\\46e347d1-d2cf-428b-b8f3-4b25077f49ec\Bioclim\furcata_boliviana_projection.img
+        </RawImage>
+        <ColouredImage>
+          C:/Documents and Settings/timlinux/.omgui/modelOutputs/46e347d1-d2cf-428b-b8f3-4b25077f49ec/Bioclim\furcata_boliviana_projection.png
+        </ColouredImage>
+      </OutputImages>
+    </ModelProjection>
+  </Model>
+<Experiment>

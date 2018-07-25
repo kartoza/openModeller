@@ -1,0 +1,9 @@
+/usr/lib/libomg_core.so
+/usr/lib/libomg_widgets.so
+/usr/bin/openModellerDesktop
+/usr/lib/openModellerDesktop/modeller/libomg_localmodellerplugin.so
+/usr/lib/openModellerDesktop/modeller/libomg_soapmodellerplugin.so
+/usr/lib/openModellerDesktop/scraper/libomg_gbifrest_plugin.so
+/usr/lib/openModellerDesktop/scraper/libomg_splink_plugin.so
+/usr/share/openModellerDesktop/i18n/openModellerDesktop_pt_BR.qm
+/usr/share/openModellerDesktop/i18n/openModellerDesktop_zh_TW.qm

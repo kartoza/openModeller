@@ -1,0 +1,168 @@
+/**
+ * Definition of ProductFeature class
+ * 
+ * @author Renato De Giovanni
+ * $Id: product_feature.cpp 5637 2012-11-27 11:27:10Z rdg $
+ *
+ * LICENSE INFORMATION
+ * 
+ * Copyright(c) 2011 by CRIA -
+ * Centro de Referencia em Informacao Ambiental
+ *
+ * http://www.cria.org.br
+ * 
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details:
+ * 
+ * http://www.gnu.org/copyleft/gpl.html
+ */
+
+#include "product_feature.hh"
+#include <openmodeller/Exceptions.hh>
+#include <openmodeller/os_specific.hh>
+
+ProductFeature::ProductFeature( int layerIndex1, int layerIndex2 ):MxFeature()
+{
+  _type = F_PRODUCT;
+  _layerIndex1 = layerIndex1;
+  _layerIndex2 = layerIndex2;
+}
+
+ProductFeature::ProductFeature( const ConstConfigurationPtr & config ):MxFeature()
+{
+  _type = F_PRODUCT;
+  setConfiguration( config );
+}
+
+ProductFeature::~ProductFeature() {}
+
+Scalar 
+ProductFeature::getRawVal( const Sample& sample ) const
+{
+  return sample[_layerIndex1]*sample[_layerIndex2];
+}
+
+Scalar 
+ProductFeature::getVal( const Sample& sample ) const
+{
+  return (getRawVal( sample ) - _min) / _scale;
+}
+
+bool ProductFeature::isActive() const {
+  return _active;
+}
+
+std::string
+ProductFeature::getDescription( const EnvironmentPtr& env )
+{
+  std::string desc("P");
+  std::string path1 = env->getLayerPath(_layerIndex1);
+  std::string path2 = env->getLayerPath(_layerIndex2);
+  desc.append( path1.substr( path1.rfind("/") + 1 ) ).append("X").append( path2.substr( path2.rfind("/") + 1 ) );
+  return desc;
+}
+
+ConfigurationPtr 
+ProductFeature::getConfiguration() const
+{
+  ConfigurationPtr config( new ConfigurationImpl("Feature") );
+
+  config->addNameValue( "Type", _type );
+
+  config->addNameValue( "Ref1", _layerIndex1 );
+  config->addNameValue( "Ref2", _layerIndex2 );
+
+  config->addNameValue( "Min", _min );
+
+  config->addNameValue( "Max", _max );
+
+  config->addNameValue( "Lambda", _lambda );
+
+  return config;
+}
+
+void 
+ProductFeature::setConfiguration( const ConstConfigurationPtr & config )
+{
+  int type = -1;
+
+  try {
+
+    type = config->getAttributeAsInt( "Type", -1 );
+  }
+  catch ( AttributeNotFound& e ) {
+
+    std::string msg = "Missing 'Type' parameter in hinge feature deserialization.\n";
+    Log::instance()->error( msg.c_str() );
+    throw InvalidParameterException( msg );
+    UNUSED(e);
+  }
+
+  if ( type != F_PRODUCT ) {
+
+    std::string msg = "Incompatible feature type in product feature deserialization.\n";
+    Log::instance()->error( msg.c_str() );
+    throw InvalidParameterException( msg );
+  }
+
+  try {
+
+    _layerIndex1 = config->getAttributeAsInt( "Ref1", -1 );
+  }
+  catch ( AttributeNotFound& e ) {
+
+    UNUSED(e);
+    std::string msg = "Missing 'Ref1' parameter in product feature deserialization.\n";
+    Log::instance()->error( msg.c_str() );
+    throw InvalidParameterException( msg );
+  }
+
+  try {
+
+    _layerIndex2 = config->getAttributeAsInt( "Ref2", -1 );
+  }
+  catch ( AttributeNotFound& e ) {
+
+    UNUSED(e);
+    std::string msg = "Missing 'Ref2' parameter in product feature deserialization.\n";
+    Log::instance()->error( msg.c_str() );
+    throw InvalidParameterException( msg );
+  }
+
+  try {
+
+    _min = config->getAttributeAsDouble( "Min", -1 );
+  }
+  catch ( AttributeNotFound& e ) {
+
+    UNUSED(e);
+    std::string msg = "Missing 'Min' parameter in product feature deserialization.\n";
+    Log::instance()->error( msg.c_str() );
+    throw InvalidParameterException( msg );
+  }
+
+  try {
+
+    _max = config->getAttributeAsDouble( "Max", -1 );
+  }
+  catch ( AttributeNotFound& e ) {
+
+    UNUSED(e);
+    std::string msg = "Missing 'Max' parameter in product feature deserialization.\n";
+    Log::instance()->error( msg.c_str() );
+    throw InvalidParameterException( msg );
+  }
+
+  _scale = _max - _min;
+
+  _lambda = config->getAttributeAsDouble( "Lambda", 0.0 );
+}
+
+

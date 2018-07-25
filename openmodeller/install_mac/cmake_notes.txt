@@ -1,0 +1,15 @@
+For building with universal libs
+
+export LIB_DIR=/usr/local/qgis_universal_deps; ccmake -DCMAKE_INSTALL_PREFIX=/usr/local/openmodeller -DCMAKE_OSX_ARCHITECTURES="i386;ppc" ..
+
+Or as above but to generate an xcode project:
+
+export LIB_DIR=/usr/local/qgis_universal_deps; ccmake -DCMAKE_INSTALL_PREFIX=/usr/local/openmodeller -DCMAKE_OSX_ARCHITECTURES="i386;ppc" -G Xcode  ..
+
+For some reason libexpat is linked using a relative path so you should change this
+
+sudo install_name_tool -change @executable_path/lib/libexpat.dylib ${LIB_DIR}/lib/libexpat.dylib /usr/local/lib/libopenmodeller.dylib
+
+and same for proj...
+
+sudo install_name_tool -change @executable_path/lib/libproj.dylib ${LIB_DIR}/lib/libproj.dylib /usr/local/lib/libopenmodeller.dylib

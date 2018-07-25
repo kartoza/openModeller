@@ -1,0 +1,63 @@
+
+
+
+
+%!target: html
+%!postproc: '(?i)(<head>)' '\1\n<TITLE>openModeller</TITLE>'
+%! style: om.css
+%! encoding: utf-8
+
+%!include: menu.t2t
+
+== Documentation for Users ==
+
+%!include: algorithms.t2t
+- Command line tools
+ - [Introduction for Windows users cli_intro_win.html]
+ - [om_algorithm man1/om_algorithm.1.html]
+ - [om_console man1/om_console.1.html]
+ - [om_evaluate man1/om_evaluate.1.html]
+ - [om_model man1/om_model.1.html]
+ - [om_niche man1/om_niche.1.html] (only for GNU/Linux with X11)
+ - [om_points man1/om_points.1.html]
+ - [om_project man1/om_project.1.html]
+ - [om_pseudo man1/om_project.1.html]
+ - [om_sampler man1/om_sampler.1.html]
+ - [om_test man1/om_test.1.html]
+ - [om_viewer man1/om_viewer.1.html] (only for GNU/Linux with X11)
+- [Tutorial video for oM Desktop http://openmodeller.cria.org.br/images/openModellerDesktopVideoHighQuality.mpg]
+
+
+== Documentation for Developers ==
+
+- [Framework compilation guide INSTALL.html]
+- [How to add new algorithms alg_manual.html]
+- openModeller Web Service interface (OMWS)
+ - [version 2.0 web_service_2.html]
+ - [version 1.0 web_service.html]
+- oM Server guide
+ - [version 2.0 om_server_2.html]
+ - [version 1.0 om_server.html]
+- Framework API
+ - [version 1.5.0 http://openmodeller.cria.org.br/doxygen/1.5.0/]
+ - [version 1.4.0 http://openmodeller.cria.org.br/doxygen/1.4.0/]
+ - [version 1.3.0 http://openmodeller.cria.org.br/doxygen/1.3.0/]
+ - [version 1.2.0 http://openmodeller.cria.org.br/doxygen/1.2.0/]
+ - [version 1.1.0 http://openmodeller.cria.org.br/doxygen/1.1.0/]
+ - [version 1.0.0 http://openmodeller.cria.org.br/doxygen/1.0.0/]
+ - [version 0.7.0 http://openmodeller.cria.org.br/doxygen/0.7.0/]
+ - [version 0.6.1 http://openmodeller.cria.org.br/doxygen/0.6.1/]
+ - [version 0.5.3 http://openmodeller.cria.org.br/doxygen/0.5.3/]
+ - [version 0.4.2 http://openmodeller.cria.org.br/doxygen/0.4.2/]
+ - [version 0.4.1 http://openmodeller.cria.org.br/doxygen/0.4.1/]
+ - [version 0.4 http://openmodeller.cria.org.br/doxygen/0.4/]
+ - [version 0.3.4 http://openmodeller.cria.org.br/doxygen/0.3.4/]
+ - [version 0.3.1 http://openmodeller.cria.org.br/doxygen/0.3.1/]
+ - [version 0.3 http://openmodeller.cria.org.br/doxygen/0.3/]
+ - [version 0.2.1 http://openmodeller.cria.org.br/doxygen/0.2.1/]
+- oM Desktop API
+ - [version 1.0.7 http://openmodeller.cria.org.br/doxygen/desktop/1.0.7/]
+
+
+-------------------------------------
+Last updated on %%mtime(%d %B %Y)

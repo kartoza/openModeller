@@ -1,0 +1,47 @@
+/**
+ * Declaration of Threshold Generator class
+ * 
+ * @author Renato De Giovanni
+ * $Id: threshold_generator.hh 5561 2012-07-06 15:47:41Z rdg $
+ *
+ * LICENSE INFORMATION
+ * 
+ * Copyright(c) 2012 by CRIA -
+ * Centro de Referencia em Informacao Ambiental
+ *
+ * http://www.cria.org.br
+ * 
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details:
+ * 
+ * http://www.gnu.org/copyleft/gpl.html
+ */
+
+#ifndef _THRESHOLDGENERATOR_HH
+#define _THRESHOLDGENERATOR_HH
+
+#include "feature_generator.hh"
+
+class ThresholdGenerator : public FeatureGenerator {
+
+public:
+
+  ThresholdGenerator(const OccurrencesPtr& presences, const OccurrencesPtr& background, LinearFeature * feature, bool reverse);
+
+  ~ThresholdGenerator();
+
+  void setSampExp( double mindev );
+
+  void updateExp( double * density, double z_lambda );
+
+  MxFeature * exportFeature(int idx);
+};
+
+#endif

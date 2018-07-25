@@ -1,0 +1,39 @@
+## Once run this will define: 
+## 
+## TERRALIB_FOUND       = system has TERRALIB lib
+##
+## TERRALIB_LIBRARY     = full path to the library
+##
+## TERRALIB_INCLUDE_DIR      = where to find headers 
+##
+## Tim Sutton
+
+
+#MESSAGE("Searching for TERRALIB")
+IF(WIN32)
+  #MESSAGE("Searching for TERRALIB in C:/program files/terralib")
+
+  SET(TERRALIB_WIN32_PATH "C:/program files/terralib/" )
+  FIND_PATH(TERRALIB_INCLUDE_DIR TeUtils.h "C:/program files/terralib/include" )
+  FIND_LIBRARY(TERRALIB_LIBRARY NAMES terralib PATHS "C:/program files/terralib/" )
+
+ELSE(WIN32)
+  IF(UNIX) 
+
+  ENDIF(UNIX)
+ENDIF(WIN32)
+
+
+IF (TERRALIB_INCLUDE_DIR AND TERRALIB_LIBRARY)
+   SET(TERRALIB_FOUND TRUE)
+ENDIF (TERRALIB_INCLUDE_DIR AND TERRALIB_LIBRARY)
+
+IF (TERRALIB_FOUND)
+   IF (NOT TERRALIB_FIND_QUIETLY)
+      MESSAGE(STATUS "Found TERRALIB: ${TERRALIB_LIBRARY}")
+   ENDIF (NOT TERRALIB_FIND_QUIETLY)
+ELSE (TERRALIB_FOUND)
+   IF (TERRALIB_FIND_REQUIRED)
+      MESSAGE(FATAL_ERROR "Could not find TERRALIB")
+   ENDIF (TERRALIB_FIND_REQUIRED)
+ENDIF (TERRALIB_FOUND)

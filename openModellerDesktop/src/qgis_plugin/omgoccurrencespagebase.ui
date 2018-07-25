@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>OmgOccurrencesPageBase</class>
+ <widget class="QWizardPage" name="OmgOccurrencesPageBase">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>WizardPage</string>
+  </property>
+  <property name="title">
+   <string>Select occurrence data</string>
+  </property>
+  <property name="subTitle">
+   <string>You can define the occurrence points used for creating your model(s) from a point or non-spatial layer in QGIS, or from a text file in the standard openModeller occurrences format. </string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" colspan="2">
+    <widget class="QRadioButton" name="radUseOccurrencesLayer">
+     <property name="text">
+      <string>Use a layer currently loaded in QGIS</string>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QListWidget" name="lstPointLayers">
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <widget class="QRadioButton" name="radUseOccurrencesFile">
+     <property name="text">
+      <string>Select occurrences from a file on my filesystem</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>radUseOccurrencesLayer</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>lstPointLayers</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>60</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>56</x>
+     <y>111</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radUseOccurrencesFile</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>lstPointLayers</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>165</x>
+     <y>278</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>161</x>
+     <y>213</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

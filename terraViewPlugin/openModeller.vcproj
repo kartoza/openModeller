@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="7.10"
+	Name="openModeller"
+	ProjectGUID="{2B118D25-321F-4691-93CF-91E21A7D480D}">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="2"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions="-Zm200 -GX -w34100 -w34189"
+				Optimization="4"
+				AdditionalIncludeDirectories=".\;&quot;$(OM_HOME)\src&quot;;&quot;$(OM_HOME)\src\openmodeller&quot;;&quot;$(TERRALIB_HOME)\src\libspl&quot;;&quot;$(TERRALIB_HOME)\src\terralib\kernel&quot;;&quot;$(TERRALIB_HOME)\src\terralib\functions&quot;;&quot;$(TERRALIB_HOME)\src\terralib\drivers\qt&quot;;&quot;$(TERRALIB_HOME)\src\terralib\image_processing&quot;;&quot;$(TERRALIB_HOME)\terraView&quot;;&quot;$(TERRALIB_HOME)\terraView\plugins&quot;;&quot;$(TERRALIB_HOME)\terraView\ui&quot;;&quot;$(TERRALIB_HOME)\src\terralib\drivers\MySQL&quot;;&quot;$(TERRALIB_HOME)\src\terralib\drivers\MySQL\include&quot;;&quot;$(TERRALIB_HOME)\src\terralib\drivers\Oracle&quot;;&quot;$(TERRALIB_HOME)\src\terralib\drivers\Oracle\OCI\include&quot;;&quot;$(TERRALIB_HOME)\src\terralib\drivers\PostgreSQL&quot;;&quot;$(TERRALIB_HOME)\src\terralib\drivers\PostgreSQL\includepg&quot;;&quot;$(TERRALIB_HOME)\terralibw\ado&quot;;&quot;$(QTDIR)\include&quot;;temp\;&quot;E:\qt\mkspecs\win32-msvc.net&quot;"
+				PreprocessorDefinitions="_WINDOWS;UNICODE;WIN32;QT_DLL;QT_THREAD_SUPPORT;CORE_DLL_IMPORT;BUILD_TERRALIB"
+				GeneratePreprocessedFile="0"
+				MinimalRebuild="TRUE"
+				ExceptionHandling="TRUE"
+				RuntimeLibrary="3"
+				BufferSecurityCheck="FALSE"
+				RuntimeTypeInfo="TRUE"
+				AssemblerListingLocation=""
+				ObjectFile="$(IntDir)/"
+				ProgramDataBaseFileName="$(IntDir)/vc70.pdb"
+				WarningLevel="3"
+				SuppressStartupBanner="TRUE"
+				DebugInformationFormat="3"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="$(OM_HOME)\windows\vc7\build_debug\libopenmodeller_debug.lib qt.lib $(TERRALIB_HOME)\terralibw\Oracle\Oci\Oci.lib $(TERRALIB_HOME)\terralibw\MySQL\libMySQL.lib $(TERRALIB_HOME)\terralibw\PostgreSQL\libpq.lib $(TERRALIB_HOME)\terralibw\libspl\Debug\libspl.lib $(TERRALIB_HOME)\terralibw\image_processing\debug\terralibpdi.lib $(TERRALIB_HOME)\terralibw\terralib\debug\terralib.lib $(TERRALIB_HOME)\terralibw\libjpeg\debug\libjpeg.lib $(TERRALIB_HOME)\terralibw\shapelib\Debug\shapelib.lib $(TERRALIB_HOME)\terralibw\tiff\debug\tiff.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib imm32.lib winmm.lib wsock32.lib winspool.lib delayimp.lib"
+				OutputFile=".\Debug\openModeller.dll"
+				SuppressStartupBanner="TRUE"
+				AdditionalLibraryDirectories="&quot;$(QTDIR)\lib&quot;"
+				IgnoreDefaultLibraryNames=""
+				GenerateDebugInformation="TRUE"
+				ProgramDatabaseFile=""
+				SubSystem="2"
+				BaseAddress="0x39D00000"/>
+			<Tool
+				Name="VCMIDLTool"
+				WarningLevel="0"
+				DefaultCharType="0"
+				EnableErrorChecks="1"/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				CommandLine="echo on
+if not exist $(TERRALIB_HOME)\terraView\windows\plugins mkdir $(TERRALIB_HOME)\terraView\windows\plugins
+copy .\Debug\openModeller.dll $(TERRALIB_HOME)\terraView\windows\plugins
+copy .\Debug\openModeller.exp $(TERRALIB_HOME)\terraView\windows\plugins
+copy .\Debug\openModeller.lib $(TERRALIB_HOME)\terraView\windows\plugins
+echo off
+"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories=".\;&quot;$(OM_HOME)\src&quot;;&quot;$(OM_HOME)\src\openmodeller&quot;;&quot;$(TERRALIB_HOME)\src\libspl&quot;;&quot;$(TERRALIB_HOME)\src\terralib\kernel&quot;;&quot;$(TERRALIB_HOME)\src\terralib\functions&quot;;&quot;$(TERRALIB_HOME)\src\terralib\drivers\qt&quot;;&quot;$(TERRALIB_HOME)\src\terralib\image_processing&quot;;&quot;$(TERRALIB_HOME)\terraView&quot;;&quot;$(TERRALIB_HOME)\terraView\plugins&quot;;&quot;$(TERRALIB_HOME)\terraView\ui&quot;;&quot;$(TERRALIB_HOME)\src\terralib\drivers\MySQL&quot;;&quot;$(TERRALIB_HOME)\src\terralib\drivers\MySQL\include&quot;;&quot;$(TERRALIB_HOME)\src\terralib\drivers\Oracle&quot;;&quot;$(TERRALIB_HOME)\src\terralib\drivers\Oracle\OCI\include&quot;;&quot;$(TERRALIB_HOME)\src\terralib\drivers\PostgreSQL&quot;;&quot;$(TERRALIB_HOME)\src\terralib\drivers\PostgreSQL\includepg&quot;;&quot;$(TERRALIB_HOME)\terralibw\ado&quot;;&quot;$(QTDIR)\include&quot;;temp\;&quot;E:\qt\mkspecs\win32-msvc.net&quot;"
+				PreprocessorDefinitions="_WINDOWS;UNICODE;WIN32;QT_DLL;QT_THREAD_SUPPORT;CORE_DLL_IMPORT;BUILD_TERRALIB"
+				RuntimeLibrary="2"
+				WarningLevel="0"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="$(OM_HOME)\windows\vc7\build\libopenmodeller.lib qt.lib $(TERRALIB_HOME)\terralibw\Oracle\Oci\Oci.lib $(TERRALIB_HOME)\terralibw\MySQL\libMySQL.lib $(TERRALIB_HOME)\terralibw\PostgreSQL\libpq.lib $(TERRALIB_HOME)\terralibw\libspl\release\libspl.lib $(TERRALIB_HOME)\terralibw\image_processing\release\terralibpdi.lib $(TERRALIB_HOME)\terralibw\terralib\release\terralib.lib $(TERRALIB_HOME)\terralibw\libjpeg\release\libjpeg.lib $(TERRALIB_HOME)\terralibw\shapelib\Release\shapelib.lib $(TERRALIB_HOME)\terralibw\tiff\release\tiff.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib imm32.lib winmm.lib wsock32.lib winspool.lib delayimp.lib"
+				OutputFile=".\Release\openModeller.dll"
+				AdditionalLibraryDirectories="$(QTDIR)\lib"
+				IgnoreDefaultLibraryNames=""/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				CommandLine="echo on
+copy .\Release\openModeller.dll $(TERRALIB_HOME)\terraView\windows\plugins
+copy .\Release\openModeller.exp $(TERRALIB_HOME)\terraView\windows\plugins
+copy .\Release\openModeller.lib $(TERRALIB_HOME)\terraView\windows\plugins
+echo off
+"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+	</Configurations>
+	<References>
+	</References>
+	<Files>
+		<Filter
+			Name="Source Files"
+			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat">
+			<File
+				RelativePath=".\openModellerPluginCode.cpp">
+			</File>
+			<File
+				RelativePath=".\openModellerPluginWindow.cpp">
+			</File>
+			<File
+				RelativePath=".\parametersWindow.cpp">
+			</File>
+			<File
+				RelativePath=".\QOpenModeller.cpp">
+			</File>
+		</Filter>
+		<Filter
+			Name="Header Files"
+			Filter="h;hpp;hxx;hm;inl">
+			<File
+				RelativePath=".\openModellerPluginCode.h">
+			</File>
+			<File
+				RelativePath=".\openModellerPluginWindow.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing openModellerPluginWindow.h..."
+						CommandLine="$(QTDIR)\bin\moc.exe .\openModellerPluginWindow.h -o tmp\moc\moc_openModellerPluginWindow.cpp
+"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="tmp\moc\moc_openModellerPluginWindow.cpp"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing openModellerPluginWindow.h..."
+						CommandLine="$(QTDIR)\bin\moc.exe openModellerPluginWindow.h -o tmp\moc\moc_openModellerPluginWindow.cpp
+"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="tmp\moc\moc_openModellerPluginWindow.cpp"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\parametersWindow.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing parametersWindow.h..."
+						CommandLine="$(QTDIR)\bin\moc.exe .\parametersWindow.h -o tmp\moc\moc_parametersWindow.cpp
+"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="tmp\moc\moc_parametersWindow.cpp"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing parametersWindow.h..."
+						CommandLine="$(QTDIR)\bin\moc.exe parametersWindow.h -o tmp\moc\moc_parametersWindow.cpp
+"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="tmp\moc\moc_parametersWindow.cpp"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\QLogCallback.h">
+			</File>
+			<File
+				RelativePath=".\QOpenModeller.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing QOpenModeller.h..."
+						CommandLine="$(QTDIR)\bin\moc.exe .\QOpenModeller.h -o tmp\moc\moc_QOpenModeller.cpp
+"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="tmp\moc\moc_QOpenModeller.cpp"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing QOpenModeller.h..."
+						CommandLine="$(QTDIR)\bin\moc.exe QOpenMOdeller.h -o tmp\moc\moc_QOpenMOdeller.cpp
+"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="tmp\moc\moc_QOpenModeller.cpp"/>
+				</FileConfiguration>
+			</File>
+		</Filter>
+		<Filter
+			Name="Generated MOC Files"
+			Filter="cpp;c;cxx;moc">
+			<File
+				RelativePath=".\tmp\moc\moc_openModellerForm.cpp">
+			</File>
+			<File
+				RelativePath=".\tmp\moc\moc_openModellerPluginWindow.cpp">
+			</File>
+			<File
+				RelativePath=".\tmp\moc\moc_parametersForm.cpp">
+			</File>
+			<File
+				RelativePath=".\tmp\moc\moc_parametersWindow.cpp">
+			</File>
+			<File
+				RelativePath=".\tmp\moc\moc_progressForm.cpp">
+			</File>
+			<File
+				RelativePath=".\tmp\moc\moc_QOpenModeller.cpp">
+			</File>
+			<File
+				RelativePath=".\tmp\moc\moc_TeQtDatabasesListView.cpp">
+			</File>
+			<File
+				RelativePath=".\tmp\moc\moc_TeQtViewsListView.cpp">
+			</File>
+		</Filter>
+		<Filter
+			Name="Generated UI Files"
+			Filter="cpp;c;cxx;h;hpp;hxx;">
+			<File
+				RelativePath=".\openModellerForm.cpp">
+			</File>
+			<File
+				RelativePath=".\openModellerForm.h">
+			</File>
+			<File
+				RelativePath=".\parametersForm.cpp">
+			</File>
+			<File
+				RelativePath=".\parametersForm.h">
+			</File>
+			<File
+				RelativePath=".\progressForm.cpp">
+			</File>
+			<File
+				RelativePath=".\progressForm.h">
+			</File>
+		</Filter>
+		<Filter
+			Name="Forms"
+			Filter="ui"
+			ParseFiles="FALSE">
+			<File
+				RelativePath=".\openModellerForm.ui">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing openModellerForm.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe &quot;.\openModellerForm.ui&quot; -o &quot;.\openModellerForm.h&quot; &amp;&amp; $(QTDIR)\bin\uic.exe &quot;.\openModellerForm.ui&quot; -i &quot;.\openModellerForm.h&quot; -o &quot;.\openModellerForm.cpp&quot; &amp;&amp; $(QTDIR)\bin\moc.exe &quot;.\openModellerForm.h&quot; -o &quot;tmp\moc\moc_openModellerForm.cpp&quot;
+"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;$(QTDIR)\bin\uic.exe"
+						Outputs="&quot;.\openModellerForm.h&quot;;&quot;.\openModellerForm.cpp&quot;;&quot;tmp\moc\moc_openModellerForm.cpp&quot;"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\parametersForm.ui">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing parametersForm.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe &quot;.\parametersForm.ui&quot; -o &quot;.\parametersForm.h&quot; &amp;&amp; $(QTDIR)\bin\uic.exe &quot;.\parametersForm.ui&quot; -i &quot;.\parametersForm.h&quot; -o &quot;.\parametersForm.cpp&quot; &amp;&amp; $(QTDIR)\bin\moc.exe &quot;.\parametersForm.h&quot; -o &quot;tmp\moc\moc_parametersForm.cpp&quot;
+"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;$(QTDIR)\bin\uic.exe"
+						Outputs="&quot;.\parametersForm.h&quot;;&quot;.\parametersForm.cpp&quot;;&quot;tmp\moc\moc_parametersForm.cpp&quot;"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\progressForm.ui">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing progressForm.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe &quot;.\progressForm.ui&quot; -o &quot;.\progressForm.h&quot; &amp;&amp; $(QTDIR)\bin\uic.exe &quot;.\progressForm.ui&quot; -i &quot;.\progressForm.h&quot; -o &quot;.\progressForm.cpp&quot; &amp;&amp; $(QTDIR)\bin\moc.exe &quot;.\progressForm.h&quot; -o &quot;tmp\moc\moc_progressForm.cpp&quot;
+"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;$(QTDIR)\bin\uic.exe"
+						Outputs="&quot;.\progressForm.h&quot;;&quot;.\progressForm.cpp&quot;;&quot;tmp\moc\moc_progressForm.cpp&quot;"/>
+				</FileConfiguration>
+			</File>
+		</Filter>
+		<Filter
+			Name="TeDatabases"
+			Filter="">
+			<File
+				RelativePath="$(TERRALIB_HOME)\terralibw\ado\TeAdoDB.cpp">
+			</File>
+			<File
+				RelativePath="$(TERRALIB_HOME)\terralibw\ado\TeAdoOracle.cpp">
+			</File>
+			<File
+				RelativePath="$(TERRALIB_HOME)\terralibw\ado\TeAdoSqlServer.cpp">
+			</File>
+			<File
+				RelativePath="$(TERRALIB_HOME)\src\terralib\drivers\MySQL\TeMySQL.cpp">
+			</File>
+			<File
+				RelativePath="$(TERRALIB_HOME)\src\terralib\drivers\Oracle\TeOCIConnect.cpp">
+			</File>
+			<File
+				RelativePath="$(TERRALIB_HOME)\src\terralib\drivers\Oracle\TeOCICursor.cpp">
+			</File>
+			<File
+				RelativePath="$(TERRALIB_HOME)\src\terralib\drivers\Oracle\TeOCIOracle.cpp">
+			</File>
+			<File
+				RelativePath="$(TERRALIB_HOME)\src\terralib\drivers\Oracle\TeOCISDO.cpp">
+			</File>
+			<File
+				RelativePath="$(TERRALIB_HOME)\src\terralib\drivers\Oracle\TeOracleSpatial.cpp">
+			</File>
+			<File
+				RelativePath="$(TERRALIB_HOME)\src\terralib\drivers\PostgreSQL\TePGInterface.cpp">
+			</File>
+			<File
+				RelativePath="$(TERRALIB_HOME)\src\terralib\drivers\PostgreSQL\TePGUtils.cpp">
+			</File>
+			<File
+				RelativePath="$(TERRALIB_HOME)\src\terralib\drivers\PostgreSQL\TePostGIS.cpp">
+			</File>
+			<File
+				RelativePath="$(TERRALIB_HOME)\src\terralib\drivers\PostgreSQL\TePostgreSQL.cpp">
+			</File>
+		</Filter>
+		<Filter
+			Name="TeQt"
+			Filter="">
+			<File
+				RelativePath="$(TERRALIB_HOME)\src\terralib\drivers\qt\TeQtCheckListItem.cpp">
+			</File>
+			<File
+				RelativePath="$(TERRALIB_HOME)\src\terralib\drivers\qt\TeQtDatabaseItem.cpp">
+			</File>
+			<File
+				RelativePath="$(TERRALIB_HOME)\src\terralib\drivers\qt\TeQtDatabasesListView.cpp">
+			</File>
+			<File
+				RelativePath="$(TERRALIB_HOME)\src\terralib\drivers\qt\TeQtDatabasesListView.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing $(TERRALIB_HOME)\src\terralib\drivers\qt\TeQtDatabasesListView.h..."
+						CommandLine="$(QTDIR)\bin\moc.exe $(TERRALIB_HOME)\src\terralib\drivers\qt\TeQtDatabasesListView.h -o tmp\moc\moc_TeQtDatabasesListView.cpp
+"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="tmp\moc\moc_TeQtDatabasesListView.cpp"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing $(TERRALIB_HOME)\src\terralib\drivers\qt\TeQtDatabasesListView.h..."
+						CommandLine="$(QTDIR)\bin\moc.exe $(TERRALIB_HOME)\src\terralib\drivers\qt\TeQtDatabasesListView.h -o tmp\moc\moc_TeQtDatabasesListView.cpp
+"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="temp\moc_TeQtDatabasesListView.cpp"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="$(TERRALIB_HOME)\src\terralib\drivers\qt\TeQtViewsListView.cpp">
+			</File>
+			<File
+				RelativePath="$(TERRALIB_HOME)\src\terralib\drivers\qt\TeQtViewsListView.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing $(TERRALIB_HOME)\src\terralib\drivers\qt\TeQtViewsListView.h..."
+						CommandLine="$(QTDIR)\bin\moc.exe $(TERRALIB_HOME)\src\terralib\drivers\qt\TeQtViewsListView.h -o tmp\moc\moc_TeQtViewsListView.cpp
+"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="tmp\moc\moc_TeQtViewsListView.cpp"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing $(TERRALIB_HOME)\src\terralib\drivers\qt\TeQtViewsListView.h..."
+						CommandLine="$(QTDIR)\bin\moc.exe $(TERRALIB_HOME)\src\terralib\drivers\qt\TeQtViewsListView.h -o tmp\moc\moc_TeQtViewsListView.cpp
+"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="temp\moc_TeQtViewsListView.cpp"/>
+				</FileConfiguration>
+			</File>
+		</Filter>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

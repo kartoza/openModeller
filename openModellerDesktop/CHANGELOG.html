@@ -1,0 +1,208 @@
+<h1>Version 1.1.0</h1>
+
+<ul>
+  <li><bold>openModeller Library</bold>
+  <ul>
+    <li>Support changes and new features in openModeller 1.1.0.</li>
+  </ul>
+  </li>
+  <li><bold>Tools</bold>
+  <ul>
+    <li>Fixed bugs in the pre-analysis module (it was not working properly with a customized data directory and it was crashing when the localities file had only 4 columns).</li>
+  </ul>
+  </li>
+</ul>
+
+<h1>Version 1.0.9</h1>
+
+<ul>
+  <li><bold>openModeller Library</bold>
+  <ul>
+    <li>Support changes and new features in openModeller 1.0.0.</li>
+  </ul>
+  </li>
+  <li><bold>Experiment designer</bold>
+  <ul>
+    <li>New parameters for model validation: custom threshold or lowest training threshold for confusion matrix, and also partial ROC (AUC ratio given a maximum omission).</li>
+    <li>Output directory and output file type can now be specified for each experiment.</li>
+  </ul>
+  </li>
+  <li><bold>Reports</bold>
+  <ul>
+    <li>Bugfix: false negatives cell in the confusion matrix was showing false positives.</li>
+  </ul>
+  </li>
+  <li><bold>Tools</bold>
+  <ul>
+    <li>New interface to perform external tests on existing models.</li>
+    <li>New interface to perform pre-analysis on layers (jackknife & chi-square).</li>
+  </ul>
+  </li>
+  <li><bold>Documentation</bold>
+  <ul>
+    <li>New window to display all raster formats supported.</li>
+  </ul>
+  </li>
+</ul>
+
+<h1>Version 1.0.8</h1>
+<ul>
+  <li><bold>openModeller Library</bold>
+  <ul>
+    <li>Support changes and new features in openModeller 0.7.0.</li>
+  </ul>
+  </li>
+  <li><bold>Experiment designer</bold>
+  <ul>
+    <li>Allow multiple projections in the same experiment.</li>
+    <li>Added option to automatically split input points into testing and training according to a given proportion.</li>
+  </ul>
+  </li>
+  <li><bold>Raster output</bold>
+  <ul>
+    <li>Added option in preferences to generate maps in Arc/Info ASCII Grid format (byte or floating point representation).</li>
+    <li>Display testing and training points using different shapes: circles for training points, triangles for testing points.</li>
+  </ul>
+  </li>
+  <li><bold>Reports</bold>
+  <ul>
+    <li>Model report: Display internal and external tests separately.</li>
+  </ul>
+  </li>
+  <li><bold>Installer</bold>
+  <ul>
+    <li>Win: MSVC DLLs are now always installed.</li>
+    <li>All: Removed locale options (Portuguese and Afrikaans) that were not being updated.</li>
+  </ul>
+  </li>
+</ul>
+
+<h1>Version 1.0.7</h1>
+
+<ul>
+  <li><bold>openModeller Library</bold>
+  <ul>
+    <li>Support changes and new features in openModeller 0.5.3</li>
+  </ul>
+  </li>
+  <li><bold>Options</bold>
+  <ul>
+    <li>Added user option to allow / disallow use of threading in experiment.</li>
+  </ul>
+  </li>
+  <li><bold>Layer Set Manager</bold>
+  <ul>
+    <li>Let the layer count label show an appropriate value when a new layerset is created.</li>
+    <li>Don't let the user apply a new layerset before the name field is populated.</li>
+  </ul>
+  </li>
+  <li><bold>Algorithm Manager</bold>
+  <ul>
+    <li>Use spinbox for float and real number inputs.</li>
+    <li>Show parameter descriptions as text labels as well as tooltips.</li>
+  </ul>
+  </li>
+  <li><bold>Raster output</bold>
+  <ul>
+    <li>Fixes for pseudo renderer with QGIS api changes.</li>
+    <li>Use QGIS lib to draw pseudocolor preview image.</li>
+    <li>Scale pseudocolor to min / max based on image format min / max ranges and not to the range of values containe in the raster itself. Now all model outputs are scaled to the same value range and are more comparable.</li>
+    <li>Use GDAL to write ascii grids rather than my hand carved code to do this - should prevent issues with running out of memory and subsequent crashing.</li>
+  </ul>
+  </li>
+  <li><bold>Data fetcher</bold>
+  <ul>
+    <li>Better error handling for when a data fetcher plugin cant be initialised (no more crash).</li>
+    <li>Removed the legacy GBIF plugin - only GBIF Rest plugin will be used now.</li>
+    <li>Fixed a bug where plugins were not working in windows in debug build.</li>
+  </ul>
+  </li>
+  <li><bold>Reports</bold>
+  <ul>
+    <li>Fix to remove artifacts from thumbnails.</li>
+    <li>Fixed logic error where AUC and other stats were being set in model projection instead of model reation.</li>
+    <li>Show cutoff threshold used for model stats.</li>
+  </ul>
+  </li>
+  <li><bold>Experiment designer, locality options</bold>
+  <ul>
+    <li>Added options for spatially and environmentally unique occurrence filtering to model class.</li>
+  </ul>
+  </li>
+  <li><bold>Running experiments</bold>
+  <ul>
+    <li>Delete log file before running an experiment.</li>
+    <li>Fix crash when trying to view model previews while experiment is running (dont delete raster in omggdal because its managed by registry).</li>
+    <li>Prevent a crash with zero length string for rawimage filename.</li>
+    <li>Crash fix and cosmetics improvement - when clicking a not yet run model, show a message rather than trying to load its map even though the raster does not yet exist.</li>
+  </ul>
+  </li>
+  <li><bold>Installer</bold>
+  <ul>
+    <li>Win: Install aquamaps database and reinstated option to download aquamaps data layers with the new url.</li>
+    <li>Win: Changed so that each version of omd will by default install to its own dir under program files rather than just trying to overwrite any previous version.</li>
+    <li>Linux: Use rpath to locate libs (where supported by host OS). This means you can easily install
+    more than one copy of openModeller Desktop on e.g. Linux without running into issues where
+    the wrong library gets used.</li>
+  </ul>
+  </li>
+</ul>
+
+<h1>Version 1.0.6</h1>`
+
+<ul>
+  <li> Support for absence modelling where algorithms support it
+  <li> Many user interface improvements
+  <li> Support for the new GBIF Data portal in data fetcher
+  <li> Inclusion of thresholding tool for 'hotspot' and 'concensus model' generation
+  <li> Fixed suppot for Arc/Info Binary Grid format
+  <li> Updated to include latest improvements in openModeller library
+  <li> Inclusion of two new algorithms: Support Vector Machine and Envelope Score
+  <li> Inclusion of AUC / ROC score in model report
+  <li> Thumbnail view of models
+  <li> Extracted environmental values presented in their own table
+  <li> System tray notification support
+  <li> Help infomation and 'tip of the day' on application start
+  <li> PDF report generation
+  <li> Stop / restart and reset / rerun experiments
+  <li> Caching and performance improvements to layer selector
+  <li> Map decorations (north arrow, scale bar, model label) in map view
+  <li> Optionally remember map extents when switching between models
+  <li> Source code documentation improvements
+  <li> Many additional 'under the hood' improvements
+</ul>
+
+<h1>Version 1.0.5</h1>
+
+<ul>
+  <li>Added experiment level summary report</li>
+  <li>Fixed issues with text file splitter and show status when done</li>
+  <li>Updated about window to show plugins and changelog</li>
+  <li>Installer supports unattended install on windows (install using openModeller1.0.5.exe /S from the command prompt)</li>
+  <li>Fixed issues with raster data format convertor</li>
+  <li>Enabled locality fetching using 'scraper plugins' and added GBIF Web, GBIF Rest, and speciesLink 'scrapers'</li>
+  <li>Fixed issue with splash screen hovering modally over firstrun wizard on mac</li>
+  <li>You can now export samples as TAB delimited or CSV delimited text</li>
+  <li>Don't smooth images when resampling</li>
+  <li>Added support for new (mandatory) locality id's in openModeller library</li>
+  <li>Fixed issues with window modality (various dialogs)</li>
+  <li>Fix for [ 1636820 ] oM Desktop: Interface unresponsvive during experiment run.</li>
+  <li>Fixed bug where ascii export was getting rounded to integers</li>
+  <li>Handle missing qgis vector data providers more gracefully</li>
+  <li>Double clicking on an item int eh experemient selector will cause it to be loaded</li>
+  <li>By Popular request, store the experiment outputs in a folder with a human readable name.</li>
+  <li>Fix for [ 1636715 ] oM Desktop: Display output format details in options dialog</li>
+  <li>Fix for [ 1636825 ] oM Desktop: Select a mask for layers its not default</li>
+  <li>Fixed bug [ 1636706 ] openModeller Desktop: generated ascii raster files headers incorrect</li>
+  <li>Add new localities options gui - to support modelling with multiple locality files in one directory</li>
+  <li>Fixed bug [ 1642350 ] File format filter missing in export image</li>
+  <li>Fix for bug [ 1639715 ] Splash windows go to the limbo</li>
+  <li>Show alg name after species name in progress dialog (fixes [ 1682407 ] om Desktop: Progress windows should show alg next to sp name)</li>
+  <li>Added some better error handling for aborted models. openModeller Desktop is now much less prone to crashing when a problem occurs in the library.</li>
+  <li>Fixed support for building on Mac OSX</li>
+  <li>Implemented new build system using CMake</li>
+  <li>Cleanups and improvments to windows installer to support on demand downloading of sample data and various other improvements.</li>
+</ul>
+
+
+

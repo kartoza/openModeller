@@ -1,0 +1,189 @@
+libopenmodeller (1.5.0-1) trusty; urgency=low
+
+  * New algorithm to generate virtual niches.
+  * Fixed bug in the web service when checking the origin of remote rasters.
+  * Included missing MSVC DLLs in the Windows installer.
+  * Increased string size in the Windows installer to avoid erasing the PATH environmental variable.
+  * New version of the OMWS scheduler compatible with HTCondor DagMan.
+  * Updated documentation and included metadata for the Niche Mosaic algorithm. 
+
+ -- Renato De Giovanni <renato@cria.org.br>  Wed, 07 Jan 2015 16:37:53 -0200
+
+libopenmodeller (1.1.0-1) karmic; urgency=low
+
+  * Included missing algorithms in package libopenmodeller-algorithms. 
+
+ -- Renato De Giovanni <renato@polaris>  Wed, 14 Apr 2010 10:40:14 -0300
+
+libopenmodeller (1.1.0-0) karmic; urgency=low
+
+  * Bugfix: Interquartile and envelope size adjustments were using wrong reference values for salinity and temperature in the Aquamaps algorithm.
+  * Bugfix: All GARP algorithms were crashing when the abundance value associated with one of the occurrence points had more than two digits in the integer part.
+  * Increased the default number of neurons in the hidden layer of the ANN algorithm.
+  * New argument "s" in om_niche allowing model outputs to be scaled.
+  * Re-implemented and re-enabled Maximum entropy algorithm based on the well-known Maxent.
+  * Changed environmental distance algorithm forcing the Mahalanobis distance to use an identity matrix as the covariance matrix when there's only one input point.
+  * Fixed small logical error in the CSM algorithm that could affect models with a large number of layers.
+  * New algorithm (Niche Mosaic) implemented by Dr. Missae Yamamoto.
+  * New algorithm (ENFA) kindly implemented by Dr. Chris Yesson. 
+
+ -- Renato De Giovanni <renato@cria.org.br>  Mon, 22 Mar 2010 09:12:07 -0300
+
+libopenmodeller (1.0.0-0) gutsy; urgency=low
+
+  * Changed ANN algorithm to avoid exceeding a maximum number of iterations when training by minimum error (parameter Epoch can be used for this purpose).
+  * Added missing parameter serialization in SVM (the C parameter in the SVC method).
+  * Added new method in the ConfusionMatrix class to use the lowest probability among the training presences as the threshold.
+  * Changed the modelling protocol to allow createModel and testModel requests to specify what statistics should be calculated.
+  * Removed model statistics parameters from om_model since they can be specified as part of the XML request.
+  * All command line programs now return the same openModeller version number.
+  * Changed om_niche parameters (now using getops) and created a man page for it.
+  * Implemented custom log file in the modelling server.
+  * ROC curve was not including (0,0) when background points were being generated, therefore producing lower AUC values.
+  * Added more precision to partial AUC through interpolation.
+  * Disabled the experimental maximum entropy algorithm.
+
+
+ -- Renato De Giovanni <renato@cria.org.br>  Fri, 22 May 2009 09:22:42 -0400
+
+libopenmodeller (0.7.0-3) gutsy; urgency=low
+
+  * First attempt to generate Gutsy package.
+
+ -- Renato De Giovanni <renato@cria.org.br>  Thu, 15 Jan 2009 03:17:27 -0500
+
+libopenmodeller (0.7.0) hardy; urgency=low
+
+  * New Algorithm using Artificial Neural Networks.
+  * Changed AUC calculation when no absence points are provided (instead of using 1-specificity after generating pseudo-absences, it now uses the proportion of points predicted present for a large number of random background points).
+  * Included method to calculate partial area ratio in ROC class.
+  * Added parameters --calc-matrix, --calc-roc, --num-background and --max-omission to om_test.
+  * Changed confusion matrix serialization to store all raw values.
+  * Included new map format to generate ARC/Info ASCII grid files (byte or floating point fomats).
+  * Fixed bug in Maximum Entropy algorithm (environment was being re-normalized when pseudo-absences were generated internally).
+  * Added support to handle categorical values in the Maximum Entropy algorithm.
+  * Fixed bug in ROC curve calculation: when the corresponding algorithm required normalization and the sampler passed as a parameter was unnormalized, algorithm prediction values were being calculated based on unnormalized samples.
+  * Added support to use "Spatially unique" and Environmentally unique" keywords in the request file (console interface).
+
+
+ -- Renato De Giovanni <renato@vm-cria>  Thu, 15 Jan 2009 09:00:00 -0300
+
+libopenmodeller (0.6.1) hardy; urgency=low
+
+  * Enabled integration with Condor in the modelling server.
+  * Added new method in the modelling service to perform external tests.
+  * Renamed om_testmodel to om_test. The new version is using getopts and accepts XML requests. A man page was also created.
+  * Renamed om_create to om_model.
+  * Renamed om_sampledump to om_sampler, which now accepts txt or xml input files.
+  * Removed om_dump (its functionality was incorporated by the new om_sampler).
+  * Added new parameter in om_points to split points into test/training with a given proportion.
+  * Added new parameters in the Maximum Entropy algorithm to treat layer values in a different way (feature types).
+  * Changed om_niche to receive a serialized model as a parameter.
+
+
+ -- Renato De Giovanni <renato@vm-cria>  Thu, 30 Oct 2008 10:30:00 -0300
+
+libopenmodeller (0.6.0) hardy; urgency=low
+
+  * New driver to read point data from TAPIR/DarwinCore providers.
+  * New driver to read point data from GBIF.
+  * New driver to read point data from serialized openModeller objects (XML).
+  * New generic API for pre-analysis.
+  * New console application om_algorithm replaces om_metadump.
+  * New Maximum Entropy algorithm.
+  * Changed input range of the GARP Best Subsets TrainingProportion parameter from 0-1 to 0-100 (percentage) and included explanation about differences between old and new GARP implementations in the algorithm description.
+  * Re-enabled max threads parameter in GARP Best Subsets.
+  * Removed automake files (now completely replaced by cmake).
+  * Renamed compiled constant that can be used to indicate the location of algorithms from OM_LIB_PATH to OM_ALG_PATH.
+
+
+ -- Renato De Giovanni <renato@vm-cria>  Mon,  7 Jul 2008 13:40:00 -0300
+
+libopenmodeller (0.5.3) feisty; urgency=low
+
+  * Fixed bug when GDAL failed to read a raster row (in which case the row used to have zero values). Now the row is filled with nodata values.
+  * XML request for model creation now supports additional options to filter occurrences (using spatiallyUnique or environmentallyUnique sampler functions).
+  * Changed nodata value of the default raster type (ByteHFA) to 101.
+  * Masks must now use nodata to indicate masked areas (zeros will not work anymore).
+  * om_testmodel now generates pseudo-absence points when there are no absences to be tested.
+  * Display confusion matrix cell values in om_console and om_testmodel.
+  * Renamed getLayerFilename to getLayerPath and getMaskFilename to getMaskPath in EnvironmentPtr class.
+  * Refactored om_pseudo, om_create and om_project to use the getopts command line library.
+  * Created man pages for om_pseudo, om_create and om_project.
+  * New parameter in om_pseudo to speficy the proportion of absence points to be generated.
+  * New algorithm AquaMaps (for marine organisms).
+  * Removed algorithms minimum distance and distance to average since EnvironmentalDistance provides the same functionality.
+  * "type" property of AlgParamMetadata changed from char * to a new enumeration called AlgParamDatatype. Values can be Integer, Real and String.
+  * Fixed bug in the environmental distance algorithm: probabilities were negative for points whose distance to the nearest point was beyond the maximum allowed distance. 
+  * New classes to perform jackknife and chi-square in the environmental layers.
+  * Updated TerraLib drivers for compatibility with TerraLib version 3.2.0.
+
+
+ -- Tim Sutton <timlinux@timlinux-desktop>  Wed, 26 Mar 2008 09:19:49 -0300
+
+libopenmodeller (0.5.3-pre7) feisty; urgency=low
+
+  *  Preview build 7 - fix missing X11-dev build-dep 
+
+ -- Tim Sutton <timx@linfiniti.com>  Wed, 26 Mar 2008 08:26:47 -0300
+
+libopenmodeller (0.5.3-pre6) feisty; urgency=low
+
+  * Preview 6 for the upcoming 0.5.3 release
+
+ -- Tim Sutton <tim@linfiniti.com>  Tue, 25 Mar 2008 13:58:23 -0300
+
+libopenmodeller (0.5.3-pre5) feisty; urgency=low
+
+  * Fixed build errors caused by pedantic flag being on
+
+ -- Tim Sutton <tim@linfiniti.com>  Tue, 25 Mar 2008 13:32:42 -0300
+
+libopenmodeller (0.5.3-pre4) feisty; urgency=low
+
+  * Fixed debian email and full name when uploading package
+
+ -- Tim Sutton <tim@linfiniti.com>  Tue, 25 Mar 2008 13:11:01 -0300
+
+libopenmodeller (0.5.3-pre3) feisty; urgency=low
+
+  * Beta build one of upcoming 0.5.3 release 
+
+ -- Tim Sutton <tim@linfiniti.com>  Tue, 25 Mar 2008 12:48:03 -0300
+
+libopenmodeller (0.5.3-pre2) feisty; urgency=low
+
+  * Alpha build 2 of 0.5.3 which removes aquamaps from the package 
+
+ -- Tim Sutton <timlinux@timlinux-desktop>  Sat, 15 Mar 2008 13:07:34 -0300
+
+libopenmodeller (0.5.3-pre1) feisty; urgency=low
+
+  * Alpha build of 0.5.3 
+
+ -- Tim Sutton <timlinux@timlinux-desktop>  Fri, 14 Mar 2008 15:06:10 -0300
+
+libopenmodeller (0.5.2) feisty; urgency=low
+
+  * Support for MSVC compiler added. Support for building debian packages. 
+
+ -- Tim Sutton <timlinux@debian.cria.org.br>  Tue, 23 Oct 2007 12:28:43 -0300
+
+libopenmodeller (0.5.1) feisty; urgency=low
+
+  * First debian package for openModeller library
+
+ -- Tim Sutton <tim@linfiniti.com>  Tue, 11 Sep 2007 13:32:30 -0300
+
+libopenmodeller (0.5.0pre1+svn20010807) experimental; urgency=low
+
+  * Test debian package
+
+ -- Tim Sutton <tim@linfiniti.com>  Tue,  7 Aug 2001 08:15:20 -0300
+
+libopenmodeller (0.4.2) experimental; urgency=low
+
+  * New version number. This version includes the following changes:
+ bugfixes
+
+ -- Tim Sutton <tim@linfiniti.com>  Fri, 23 Mar 2007 09:50:00 +0100

@@ -1,0 +1,296 @@
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>OmgGdalRasterContourBase</class>
+ <widget class="QDialog" name="OmgGdalRasterContourBase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>489</width>
+    <height>418</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Contour generater</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset resource="../resources/resources.qrc" >:/om_logo.png</iconset>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>8</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="3" column="1" >
+    <widget class="QLineEdit" name="leOutputDir" />
+   </item>
+   <item row="0" column="1" colspan="2" >
+    <widget class="QLabel" name="lblInputFile" >
+     <property name="font" >
+      <font>
+       <family>Sans Serif</family>
+       <pointsize>10</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+       <underline>false</underline>
+       <strikeout>false</strikeout>
+      </font>
+     </property>
+     <property name="text" >
+      <string>Input Files</string>
+     </property>
+     <property name="buddy" >
+      <cstring>pbnRemoveFile</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2" >
+    <widget class="QPushButton" name="pbnSelectDir" >
+     <property name="minimumSize" >
+      <size>
+       <width>30</width>
+       <height>26</height>
+      </size>
+     </property>
+     <property name="maximumSize" >
+      <size>
+       <width>30</width>
+       <height>26</height>
+      </size>
+     </property>
+     <property name="text" >
+      <string/>
+     </property>
+     <property name="icon" >
+      <iconset resource="../resources/resources.qrc" >:/fileopen.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1" colspan="2" >
+    <widget class="QProgressBar" name="progressBar" >
+     <property name="value" >
+      <number>0</number>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="1" colspan="2" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>131</width>
+         <height>31</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pbnProcess" >
+       <property name="text" >
+        <string>Process</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pbnClose" >
+       <property name="text" >
+        <string>Close</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item rowspan="9" row="0" column="0" >
+    <widget class="QLabel" name="lblSideBar" >
+     <property name="text" >
+      <string/>
+     </property>
+     <property name="pixmap" >
+      <pixmap resource="../resources/resources.qrc" >:/gdal_contour_sidebar.png</pixmap>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" colspan="2" >
+    <layout class="QGridLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item row="1" column="1" >
+      <widget class="QPushButton" name="pbnRemoveFile" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>0</hsizetype>
+         <vsizetype>0</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize" >
+        <size>
+         <width>30</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>30</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset resource="../resources/resources.qrc" >:/edittrash.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1" >
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>30</width>
+         <height>103</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="0" column="1" >
+      <widget class="QPushButton" name="pbnSelectFile" >
+       <property name="minimumSize" >
+        <size>
+         <width>30</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>30</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset resource="../resources/resources.qrc" >:/fileopen.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item rowspan="3" row="0" column="0" >
+      <widget class="QListWidget" name="lstInputFiles" />
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="1" colspan="2" >
+    <widget class="QLabel" name="lblOutputDir" >
+     <property name="text" >
+      <string>Output Folder</string>
+     </property>
+     <property name="buddy" >
+      <cstring>pbnRemoveFile</cstring>
+     </property>
+    </widget>
+   </item>
+   <item rowspan="2" row="5" column="1" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+  <widget class="QSplitter" name="splitter" >
+   <property name="geometry" >
+    <rect>
+     <x>520</x>
+     <y>30</y>
+     <width>30</width>
+     <height>58</height>
+    </rect>
+   </property>
+   <property name="orientation" >
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+  <widget class="QSplitter" name="splitter_2" >
+   <property name="geometry" >
+    <rect>
+     <x>520</x>
+     <y>30</y>
+     <width>30</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="orientation" >
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+  <widget class="QSplitter" name="splitter_3" >
+   <property name="geometry" >
+    <rect>
+     <x>490</x>
+     <y>30</y>
+     <width>30</width>
+     <height>167</height>
+    </rect>
+   </property>
+   <property name="orientation" >
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+ </widget>
+ <pixmapfunction></pixmapfunction>
+ <tabstops>
+  <tabstop>pbnProcess</tabstop>
+  <tabstop>pbnClose</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../resources/resources.qrc" />
+ </resources>
+ <connections>
+  <connection>
+   <sender>pbnClose</sender>
+   <signal>clicked()</signal>
+   <receiver>OmgGdalRasterContourBase</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>483</x>
+     <y>373</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>238</x>
+     <y>230</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

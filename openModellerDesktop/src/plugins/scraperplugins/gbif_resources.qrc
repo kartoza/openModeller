@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/" >
+        <file>gbif_terms.txt</file>
+    </qresource>
+</RCC>

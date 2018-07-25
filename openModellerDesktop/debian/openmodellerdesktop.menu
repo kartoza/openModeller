@@ -1,0 +1,9 @@
+?package(openModellerDesktop):\
+  needs="x11"\
+  section="Apps/Scientific"\
+  hints="KDE,Gnome"\
+  title="openModellerDesktop" \
+  longtitle="Ecological Niche Modelling Software" \
+  command="/usr/bin/openModellerDesktop" \
+  icon="/usr/share/pixmaps/globe.xpm"
+
