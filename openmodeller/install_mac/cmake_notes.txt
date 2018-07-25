@@ -16,6 +16,10 @@ cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local/openmodeller -DEXPAT_INCLUDE_DIR=/usr
 make -j8
 make install
 install_name_tool -change libopenmodeller.0.dylib /usr/local/openmodeller/lib/libopenmodeller.0.dylib /usr/local/openmodeller/bin/om_console
+pushd .
+cd /usr/local/openmodeller/lib/openmodeller
+for FILE in *.so; do install_name_tool -change libopenmodeller.0.dylib /usr/local/openmodeller/lib/libopenmodeller.0.dylib $FILE; done
+popd .
 
 If you have any library reference issues, use the following command to review dependencies:
 
