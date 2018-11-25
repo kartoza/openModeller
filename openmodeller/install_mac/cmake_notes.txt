@@ -4,25 +4,25 @@ brew install expat
 
 If you want to generate an xcode project:
 
-ccmake -DEXPAT_INCLUDE_DIR=/usr/local/opt/expat/include -DEXPAT_LIBRARY=/usr/local/opt/expat/lib/libexpat.dylib -DCMAKE_INSTALL_PREFIX=/usr/local/openmodeller -G Xcode  ..
+ccmake -DEXPAT_INCLUDE_DIR=/usr/local/opt/expat/include -DEXPAT_LIBRARY=/usr/local/opt/expat/lib/libexpat.dylib -DCMAKE_INSTALL_PREFIX=/usr/local/ -G Xcode  ..
 
 Or compile directly from command line:
 
-sudo mkdir /usr/local/openmodeller
-sudo chown -R $(whoami) /usr/local/openmodeller/
+sudo mkdir /usr/local/
+sudo chown -R $(whoami) /usr/local/
 mkdir build
 cd build
-cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local/openmodeller -DEXPAT_INCLUDE_DIR=/usr/local/opt/expat/include -DEXPAT_LIBRARY=/usr/local/opt/expat/lib/libexpat.dylib
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local/ -DEXPAT_INCLUDE_DIR=/usr/local/opt/expat/include -DEXPAT_LIBRARY=/usr/local/opt/expat/lib/libexpat.dylib
 make -j8
 make install
-install_name_tool -change libopenmodeller.0.dylib /usr/local/openmodeller/lib/libopenmodeller.0.dylib /usr/local/openmodeller/bin/om_console
+install_name_tool -change libopenmodeller.0.dylib /usr/local/lib/libopenmodeller.0.dylib /usr/local/bin/om_console
 pushd .
-cd /usr/local/openmodeller/lib/openmodeller
-for FILE in *.so; do install_name_tool -change libopenmodeller.0.dylib /usr/local/openmodeller/lib/libopenmodeller.0.dylib $FILE; done
+cd /usr/local/lib/openmodeller
+for FILE in *.so; do install_name_tool -change libopenmodeller.0.dylib /usr/local/lib/libopenmodeller.0.dylib $FILE; done
 popd .
 
 If you have any library reference issues, use the following command to review dependencies:
 
-otool -L /usr/local/openmodeller/bin/om_console
+otool -L /usr/local/bin/om_console
 
 and then the install_name_tool utility to fix the paths as needed

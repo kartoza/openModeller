@@ -178,6 +178,8 @@ TARGET_LINK_LIBRARIES(openmodeller
   ${CURL_LIBRARY}
 )
 IF (APPLE)
+ # prevent build errors on mac mojave as gdal needs to be c++std11 compliant
+ SET_PROPERTY(TARGET openmodeller PROPERTY CXX_STANDARD 11)
  TARGET_LINK_LIBRARIES(openmodeller
    "-framework CoreFoundation"
    "-framework Cocoa"

@@ -64,7 +64,7 @@ SET (OMEVALUATE_SRCS
      om_cmd_utils.cpp 
     )
 SET (OMLAYER_SRCS
-     om_layer.cpp 
+      om_layer.cpp 
      getopts/getopts.C 
      om_cmd_utils.cpp 
      om_layer_utils.cpp 
@@ -131,8 +131,8 @@ IF (X11_FOUND)
   TARGET_LINK_LIBRARIES(om_niche ${X11_LIBRARIES} openmodeller)
 ENDIF(X11_FOUND)
 
-ADD_EXECUTABLE (om_pseudo ${OMPSEUDO_SRCS})
-TARGET_LINK_LIBRARIES(om_pseudo openmodeller)
+#ADD_EXECUTABLE (om_pseudo ${OMPSEUDO_SRCS})
+#TARGET_LINK_LIBRARIES(om_pseudo openmodeller)
 
 ADD_EXECUTABLE (om_algorithm ${OMALGORITHM_SRCS})
 TARGET_LINK_LIBRARIES(om_algorithm openmodeller)
@@ -144,9 +144,40 @@ ADD_EXECUTABLE (om_evaluate ${OMEVALUATE_SRCS})
 TARGET_LINK_LIBRARIES(om_evaluate openmodeller)
 
 IF (UNIX)
-  ADD_EXECUTABLE (om_layer ${OMLAYER_SRCS})
-  TARGET_LINK_LIBRARIES(om_layer openmodeller)
+  # ADD_EXECUTABLE (om_layer ${OMLAYER_SRCS})
+  #TARGET_LINK_LIBRARIES(om_layer openmodeller)
 ENDIF(UNIX)
+
+
+
+# Relative paths for Mac executables
+IF (APPLE)
+  SET(MAC_INSTALL_RPATH
+    "@loader_path/lib"
+    "../lib"
+  )
+  set_target_properties(openmodeller PROPERTIES MACOSX_RPATH "${MAC_MACOSX_RPATH}")
+  set_target_properties(om_console PROPERTIES MACOSX_RPATH "${MAC_MACOSX_RPATH}")
+  set_target_properties(om_algorithm PROPERTIES MACOSX_RPATH "${MAC_MACOSX_RPATH}")
+  set_target_properties(om_points PROPERTIES MACOSX_RPATH "${MAC_MACOSX_RPATH}")
+#  set_target_properties(om_pseudo PROPERTIES MACOSX_RPATH "${MAC_MACOSX_RPATH}")
+  set_target_properties(om_model PROPERTIES MACOSX_RPATH "${MAC_MACOSX_RPATH}")
+  set_target_properties(om_project PROPERTIES MACOSX_RPATH "${MAC_MACOSX_RPATH}")
+  set_target_properties(om_sampler PROPERTIES MACOSX_RPATH "${MAC_MACOSX_RPATH}")
+  set_target_properties(om_test PROPERTIES MACOSX_RPATH "${MAC_MACOSX_RPATH}")
+  set_target_properties(om_evaluate PROPERTIES MACOSX_RPATH "${MAC_MACOSX_RPATH}")
+  # prevent build errors on mac mojave as gdal needs to be c++std11 compliant
+  SET_PROPERTY(TARGET openmodeller PROPERTY CXX_STANDARD 11)
+  SET_PROPERTY(TARGET om_console PROPERTY CXX_STANDARD 11)
+  SET_PROPERTY(TARGET om_algorithm PROPERTY CXX_STANDARD 11)
+  SET_PROPERTY(TARGET om_points PROPERTY CXX_STANDARD 11)
+#  SET_PROPERTY(TARGET om_pseudo PROPERTY CXX_STANDARD 11)
+  SET_PROPERTY(TARGET om_model PROPERTY CXX_STANDARD 11)
+  SET_PROPERTY(TARGET om_project PROPERTY CXX_STANDARD 11)
+  SET_PROPERTY(TARGET om_sampler PROPERTY CXX_STANDARD 11)
+  SET_PROPERTY(TARGET om_test PROPERTY CXX_STANDARD 11)
+  SET_PROPERTY(TARGET om_evaluate PROPERTY CXX_STANDARD 11)
+ENDIF (APPLE)
 
 ########################################################
 # Install
@@ -154,14 +185,14 @@ ENDIF(UNIX)
 INSTALL(TARGETS om_console RUNTIME DESTINATION ${OM_BIN_DIR})
 INSTALL(TARGETS om_algorithm RUNTIME DESTINATION ${OM_BIN_DIR})
 INSTALL(TARGETS om_points RUNTIME DESTINATION ${OM_BIN_DIR})
-INSTALL(TARGETS om_pseudo RUNTIME DESTINATION ${OM_BIN_DIR})
+# INSTALL(TARGETS om_pseudo RUNTIME DESTINATION ${OM_BIN_DIR})
 INSTALL(TARGETS om_model RUNTIME DESTINATION ${OM_BIN_DIR})
 INSTALL(TARGETS om_project RUNTIME DESTINATION ${OM_BIN_DIR})
 INSTALL(TARGETS om_sampler RUNTIME DESTINATION ${OM_BIN_DIR})
 INSTALL(TARGETS om_test RUNTIME DESTINATION ${OM_BIN_DIR})
 INSTALL(TARGETS om_evaluate RUNTIME DESTINATION ${OM_BIN_DIR})
 IF (UNIX)
-  INSTALL(TARGETS om_layer RUNTIME DESTINATION ${OM_BIN_DIR})
+  # INSTALL(TARGETS om_layer RUNTIME DESTINATION ${OM_BIN_DIR})
 ENDIF(UNIX)
 IF (X11_FOUND)
   INSTALL(TARGETS om_viewer RUNTIME DESTINATION ${OM_BIN_DIR})
@@ -172,13 +203,13 @@ IF (UNIX AND NOT OM_BUNDLE)
   INSTALL (FILES ${CMAKE_CURRENT_SOURCE_DIR}/man/om_console.1
                  ${CMAKE_CURRENT_SOURCE_DIR}/man/om_algorithm.1 
                  ${CMAKE_CURRENT_SOURCE_DIR}/man/om_points.1 
-                 ${CMAKE_CURRENT_SOURCE_DIR}/man/om_pseudo.1 
+  #               ${CMAKE_CURRENT_SOURCE_DIR}/man/om_pseudo.1 
                  ${CMAKE_CURRENT_SOURCE_DIR}/man/om_model.1 
                  ${CMAKE_CURRENT_SOURCE_DIR}/man/om_sampler.1 
                  ${CMAKE_CURRENT_SOURCE_DIR}/man/om_test.1 
                  ${CMAKE_CURRENT_SOURCE_DIR}/man/om_project.1 
                  ${CMAKE_CURRENT_SOURCE_DIR}/man/om_evaluate.1 
-                 ${CMAKE_CURRENT_SOURCE_DIR}/man/om_layer.1 
+ #                ${CMAKE_CURRENT_SOURCE_DIR}/man/om_layer.1 
            DESTINATION ${CMAKE_INSTALL_PREFIX}/man/man1)
 
   IF (X11_FOUND)

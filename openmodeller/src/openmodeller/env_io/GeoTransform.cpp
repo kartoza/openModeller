@@ -124,8 +124,8 @@ GeoTransform::change( const string& dst_desc, const string& src_desc )
   // local copies and can safely take it's address and let importFromWkt
   // change it.
   // However, we still need to cast away const-ness :(
-  char * src_desc_noconst = const_cast<char*>(src_desc.c_str());
-  char * dst_desc_noconst = const_cast<char*>(dst_desc.c_str());
+  const char * src_desc_noconst = const_cast<char*>(src_desc.c_str());
+  const char * dst_desc_noconst = const_cast<char*>(dst_desc.c_str());
 
   if ( src.importFromWkt( &src_desc_noconst ) != OGRERR_NONE ||
        dst.importFromWkt( &dst_desc_noconst ) != OGRERR_NONE )
